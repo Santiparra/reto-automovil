@@ -1,3 +1,4 @@
+import { ClienteService } from './../../cliente/service/cliente.service';
 import { Injectable } from '@nestjs/common';
 import { CreateAutomovilDto } from '../dto/create-automovil.dto';
 import { UpdateAutomovilDto } from '../dto/update-automovil.dto';
@@ -6,14 +7,20 @@ import { Automovil } from '../entities/automovil.entity';
 
 @Injectable()
 export class AutomovilService {
+  constructor (
+    private clienteService: ClienteService,
+  ) {}
 
   cars: Automovil[];
 
   createCar(createAutomovilDto: CreateAutomovilDto): Automovil {
     const car = this.addId(createAutomovilDto);
     
-    if(car.client) this.assignCarToClient(car, clientId)
+    //este llamado tiene multiple casos de uso, x ej si no existe aun el cliente
+    //y a su vez si el cliente existe crear la referencia en la otra entidad 
+    if(car.client) this.assignCarToClient(car, car.client[0].id);
 
+    this.cars.push(car)
     return car
   }
 
@@ -36,16 +43,56 @@ export class AutomovilService {
   }
 
   deleteCar(id: string): Automovil {
-    throw new Error('Method not implemented.');
+    const carToDelete = this.getCarById(id);
+    this.cars = this.cars.filter(car => car.id !== id);
+    return carToDelete
   }
 
-  assignCarToClient(id: string, updateAutomovilDto: UpdateAutomovilDto) {
-    throw new Error('Method not implemented.');
+  //falta implementar o notambien la relacion al metodo en el servicio vendedor
+  assignCarToClient(car: Automovil, clientId: string): Automovil {
+    let buyer = this.clienteService.getClientById(clientId);
+
+    //por comodidad si no existe el cliente aca lo creamos, podriamos tirar error tambien
+    
+    if(!buyer) buyer = this.clienteService.createClient(car.client[0]);
+
+    this.clienteService.assignCarToClient(car, clientId);
+    car.client = [buyer];
+
+    const carExist = this.getCarById(car.id)
+
+    //si la llamada viene del controlador, o sea, el auto ya existe 
+
+    if(carExist) {
+      const index = this.cars.indexOf ( car )
+      this.cars.splice(index, 1, car)
+      return car
+    }
+
+    //si es un callback al crear el auto lo devolvemos para que pushee
+
+    return car
   }
   
-  unassignCarFromClient(id: string, updateAutomovilDto: UpdateAutomovilDto) {
-    throw new Error('Method not implemented.');
-  }
+ /*  se que no es necesario pero aca agregue un parametro para verificar si es una devolucion
+  si es una devolucion simplemente quito al cliente
+  de lo contrario asigo al antiguo comprador como actual vendedor */
+
+  
+  unassignCarFromClient(carId: string, devolucion: boolean): Automovil {
+    const carToSwap = this.getCarById(carId);
+    if (devolucion === true) {
+      carToSwap.client = null;
+      const index = this.cars.indexOf ( carToSwap );
+      this.cars.splice(index, 1, carToSwap);
+      return carToSwap
+    }
+    //aca te quedaste, revisa la logica xfa
+    carToSwap.seller[0].id = carToSwap.client[0].id;
+    carToSwap.seller[0].name = carToSwap.client[0].name;
+    carToSwap.seller[0].sold_cars = carToSwap.client[0].sold_cars;
+    carToSwap.client = null;
+    }
 
   //esta funcion podria ser generica pero prefiero especificar la entidad retorno
   addId(carObj: CreateAutomovilDto): Automovil {
@@ -54,6 +101,4 @@ export class AutomovilService {
     return carWithId
   }
 
-
-  
 }

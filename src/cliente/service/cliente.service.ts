@@ -41,8 +41,9 @@ export class ClienteService {
     return owner.bought_cars
   }
 
-  assignCarToClient(carId: string, clientID: string) {
-    throw new Error("Method not implemented.");
+  assignCarToClient(car: Automovil, clientId: string) {
+    const buyer = this.getClientById(clientId);
+    buyer.bought_cars = [car]
   }
   
   unassignCarToClient(carId: string, clientID: string) {
