@@ -1,27 +1,41 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAutomovilDto } from '../dto/create-automovil.dto';
 import { UpdateAutomovilDto } from '../dto/update-automovil.dto';
+import { v4 as uuidv4 } from 'uuid';
+import { Automovil } from '../entities/automovil.entity';
 
 @Injectable()
 export class AutomovilService {
 
-  createCar(createAutomovilDto: CreateAutomovilDto) {
-    throw new Error('Method not implemented.');
+  cars: Automovil[];
+
+  createCar(createAutomovilDto: CreateAutomovilDto): Automovil {
+    const car = this.addId(createAutomovilDto);
+    
+    if(car.client) this.assignCarToClient(car, clientId)
+
+    return car
   }
 
-  getAllCars() {
-    throw new Error('Method not implemented.');
+  getAllCars(): Automovil[] {
+    return this.cars;
   }
 
-  getCarById(id: string) {
-    throw new Error('Method not implemented.');
+  getCarById(id: string): Automovil {
+    return this.cars.find(car => car.id === id);
   }
 
-  updateCar(id: string, updateAutomovilDto: UpdateAutomovilDto) {
-    throw new Error('Method not implemented.');
+  getCarsOnSale(): Automovil[] {
+    return this.cars.filter(car => !car.client);
   }
 
-  deleteCar(id: string) {
+  updateCar(id: string, updateAutomovilDto: UpdateAutomovilDto): Automovil {
+    let carToUpdate = this.getCarById(id);
+    carToUpdate = {...carToUpdate, ...updateAutomovilDto};
+    return carToUpdate
+  }
+
+  deleteCar(id: string): Automovil {
     throw new Error('Method not implemented.');
   }
 
@@ -32,5 +46,14 @@ export class AutomovilService {
   unassignCarFromClient(id: string, updateAutomovilDto: UpdateAutomovilDto) {
     throw new Error('Method not implemented.');
   }
+
+  //esta funcion podria ser generica pero prefiero especificar la entidad retorno
+  addId(carObj: CreateAutomovilDto): Automovil {
+    const uuid = uuidv4();
+    let carWithId = {...carObj, id: uuid}
+    return carWithId
+  }
+
+
   
 }

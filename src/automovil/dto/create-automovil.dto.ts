@@ -1,14 +1,9 @@
 import { Vendedor } from './../../vendedor/entities/vendedor.entity';
-import { IsInt, IsNotEmpty, IsString, IsUUID } from "class-validator";
-import { uuid } from "uuidv4";
+import { IsInt, IsNotEmpty, IsString } from "class-validator";
 import { Cliente } from 'src/cliente/entities/cliente.entity';
 
 export class CreateAutomovilDto {
-    
-    @IsUUID()
-    @IsNotEmpty()
-    id = uuid();
-   
+     
     @IsString()
     @IsNotEmpty()
     brand: string;
@@ -21,7 +16,7 @@ export class CreateAutomovilDto {
     @IsNotEmpty()
     year: number;
    
-    vendedor: Vendedor[];
+    seller: Vendedor[];
    
     client?: Cliente[];
 

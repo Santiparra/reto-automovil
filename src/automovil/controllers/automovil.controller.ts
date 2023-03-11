@@ -17,6 +17,11 @@ export class AutomovilController {
     return this.automovilService.getAllCars();
   }
 
+  @Get()
+  findAllCarsOnSale() {
+    return this.automovilService.getCarsOnSale();
+  }
+
   @Get(':uuid')
   findOne( @Param('uuid', ParseUUIDPipe) uuid: string ) {
     return this.automovilService.getCarById(uuid);
