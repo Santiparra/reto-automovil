@@ -1,9 +1,9 @@
 import { Automovil } from './../../automovil/entities/automovil.entity';
 
-export class Cliente {
+export class Vendedor {
 
     id: string;
     name: string;
-    bought_cars?: Automovil[];
-    
+    sold_cars: Automovil[];
+
 }
