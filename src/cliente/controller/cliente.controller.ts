@@ -1,35 +1,60 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { CreateClienteDto } from '../dto/create-cliente.dto';
-import { UpdateClienteDto } from '../dto/update-cliente.dto';
-import { ClienteService } from '../service';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe } from "@nestjs/common";
+import { CreateClienteDto } from "../dto/create-cliente.dto";
+import { UpdateClienteDto } from "../dto/update-cliente.dto";
+import { ClienteService } from "../service";
 
 
-@Controller('cliente')
+@Controller("cliente")
 export class ClienteController {
   constructor(private readonly clienteService: ClienteService) { }
 
   @Post()
   create(@Body() createClienteDto: CreateClienteDto) {
-    return this.clienteService.create(createClienteDto);
+    return this.clienteService.createClient(createClienteDto);
   }
 
   @Get()
   findAll() {
-    return this.clienteService.findAll();
+    return this.clienteService.getAllClients();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clienteService.findOne(+id);
+  @Get(":uuid")
+  findOne(@Param("uuid", ParseUUIDPipe) uuid: string) {
+    return this.clienteService.getClientById(uuid);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateClienteDto: UpdateClienteDto) {
-    return this.clienteService.update(+id, updateClienteDto);
+  @Patch(":uuid")
+  update(
+    @Param("uuid", ParseUUIDPipe) uuid: string, 
+    @Body() updateClienteDto: UpdateClienteDto
+    ) {
+    return this.clienteService.updateClient(uuid, updateClienteDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.clienteService.remove(+id);
+  @Delete(":uuid")
+  remove(@Param("uuid", ParseUUIDPipe) uuid: string) {
+    return this.clienteService.deleteClient(uuid);
   }
+
+  @Get(":uuid")
+  findCar(@Param("uuid", ParseUUIDPipe) uuid: string) {
+    return this.clienteService.getClientCar(uuid)
+  }
+
+  @Patch(":uuid")
+  assign(
+    @Param("uuid", ParseUUIDPipe) uuid: string, 
+    @Body() updateClienteDto: UpdateClienteDto
+    ) {
+    return this.clienteService.assignCarToClient(uuid, updateClienteDto);
+  }
+
+  @Patch(":uuid")
+  unassign(
+    @Param("uuid", ParseUUIDPipe) uuid: string, 
+    @Body() updateClienteDto: UpdateClienteDto
+    ) {
+    return this.clienteService.unassignCarToClient(uuid, updateClienteDto);
+  }
+
 }

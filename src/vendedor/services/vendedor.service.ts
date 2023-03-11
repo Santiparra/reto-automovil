@@ -4,23 +4,33 @@ import { UpdateVendedorDto } from '../dto/update-vendedor.dto';
 
 @Injectable()
 export class VendedorService {
-  create(createVendedorDto: CreateVendedorDto) {
-    return 'This action adds a new vendedor';
+
+  createSeller(createVendedorDto: CreateVendedorDto) {
+    throw new Error("Method not implemented.");
   }
 
-  findAll() {
-    return `This action returns all vendedor`;
+  getAllSellers() {
+    throw new Error("Method not implemented.");
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} vendedor`;
+  getSellerById(uuid: string) {
+    throw new Error("Method not implemented.");
   }
 
-  update(id: number, updateVendedorDto: UpdateVendedorDto) {
-    return `This action updates a #${id} vendedor`;
+  updateSeller(uuid: string, updateVendedorDto: UpdateVendedorDto) {
+    throw new Error("Method not implemented.");
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} vendedor`;
+  deleteSeller(id: string) {
+    throw new Error("Method not implemented.");
   }
+
+  getSoldCarsBySellerId(uuid: string) {
+    throw new Error("Method not implemented.");
+  }
+  
+  addSoldCar(uuid: string, createVendedorDto: CreateVendedorDto) {
+    throw new Error("Method not implemented.");
+  }
+  
 }

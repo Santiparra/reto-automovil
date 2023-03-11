@@ -4,23 +4,33 @@ import { UpdateAutomovilDto } from '../dto/update-automovil.dto';
 
 @Injectable()
 export class AutomovilService {
-  create(createAutomovilDto: CreateAutomovilDto) {
-    return 'This action adds a new automovil';
+
+  createCar(createAutomovilDto: CreateAutomovilDto) {
+    throw new Error('Method not implemented.');
   }
 
-  findAll() {
-    return `This action returns all automovil`;
+  getAllCars() {
+    throw new Error('Method not implemented.');
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} automovil`;
+  getCarById(id: string) {
+    throw new Error('Method not implemented.');
   }
 
-  update(id: number, updateAutomovilDto: UpdateAutomovilDto) {
-    return `This action updates a #${id} automovil`;
+  updateCar(id: string, updateAutomovilDto: UpdateAutomovilDto) {
+    throw new Error('Method not implemented.');
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} automovil`;
+  deleteCar(id: string) {
+    throw new Error('Method not implemented.');
   }
+
+  assignCarToClient(id: string, updateAutomovilDto: UpdateAutomovilDto) {
+    throw new Error('Method not implemented.');
+  }
+  
+  unassignCarFromClient(id: string, updateAutomovilDto: UpdateAutomovilDto) {
+    throw new Error('Method not implemented.');
+  }
+  
 }

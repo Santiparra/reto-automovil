@@ -1,34 +1,54 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe } from '@nestjs/common';
 import { CreateAutomovilDto } from '../dto/create-automovil.dto';
 import { UpdateAutomovilDto } from '../dto/update-automovil.dto';
 import { AutomovilService } from '../services/automovil.service';
 
 @Controller('automovil')
 export class AutomovilController {
-  constructor(private readonly automovilService: AutomovilService) {}
+  constructor( private readonly automovilService: AutomovilService ) {}
 
   @Post()
-  create(@Body() createAutomovilDto: CreateAutomovilDto) {
-    return this.automovilService.create(createAutomovilDto);
+  create( @Body() createAutomovilDto: CreateAutomovilDto ) {
+    return this.automovilService.createCar(createAutomovilDto);
   }
 
   @Get()
   findAll() {
-    return this.automovilService.findAll();
+    return this.automovilService.getAllCars();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.automovilService.findOne(+id);
+  @Get(':uuid')
+  findOne( @Param('uuid', ParseUUIDPipe) uuid: string ) {
+    return this.automovilService.getCarById(uuid);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAutomovilDto: UpdateAutomovilDto) {
-    return this.automovilService.update(+id, updateAutomovilDto);
+  @Patch( ':uuid' )
+  update( 
+    @Param('uuid', ParseUUIDPipe) uuid: string, 
+    @Body() updateAutomovilDto: UpdateAutomovilDto
+    ) {
+    return this.automovilService.updateCar(uuid, updateAutomovilDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.automovilService.remove(+id);
+  @Delete(':uuid')
+  remove( @Param('uuid', ParseUUIDPipe) uuid: string ) {
+    return this.automovilService.deleteCar(uuid);
   }
+
+  @Patch(':uuid')
+  assign(
+    @Param('uuid', ParseUUIDPipe) uuid: string, 
+    @Body() updateAutomovilDto: UpdateAutomovilDto
+    ) {
+    return this.automovilService.assignCarToClient(uuid, updateAutomovilDto);
+  }
+
+  @Patch(':uuid')
+  unassign(
+    @Param('uuid', ParseUUIDPipe) uuid: string, 
+    @Body() updateAutomovilDto: UpdateAutomovilDto
+    ) {
+    return this.automovilService.unassignCarFromClient(uuid, updateAutomovilDto);
+  }
+
 }
