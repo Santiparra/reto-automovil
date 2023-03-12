@@ -1,5 +1,5 @@
 import { Vendedor } from './../../vendedor/entities/vendedor.entity';
-import { IsInt, IsNotEmpty, IsString } from "class-validator";
+import { IsArray, IsInt, IsNotEmpty, IsOptional, IsString } from "class-validator";
 import { Cliente } from 'src/cliente/entities/cliente.entity';
 
 export class CreateAutomovilDto {
@@ -16,8 +16,12 @@ export class CreateAutomovilDto {
     @IsNotEmpty()
     year: number;
    
+    @IsArray()
+    @IsNotEmpty()
     seller: Vendedor[];
    
+    @IsArray()
+    @IsOptional()
     client?: Cliente[];
 
 }

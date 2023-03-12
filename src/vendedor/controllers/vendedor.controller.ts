@@ -1,5 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe } from "@nestjs/common";
-import { CreateAutomovilDto } from "src/automovil/dto/create-automovil.dto";
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, UsePipes, ValidationPipe } from "@nestjs/common";
 import { CreateVendedorDto } from "../dto/create-vendedor.dto";
 import { SellCarInfo } from "../dto/sell-car.dto";
 import { UpdateVendedorDto } from "../dto/update-vendedor.dto";
@@ -9,6 +8,7 @@ import { VendedorService } from "../services/vendedor.service";
 export class VendedorController {
   constructor(private readonly vendedorService: VendedorService) {}
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Post()
   create(@Body() createVendedorDto: CreateVendedorDto) {
     return this.vendedorService.createSeller(createVendedorDto);
@@ -24,6 +24,7 @@ export class VendedorController {
     return this.vendedorService.getSellerById(uuid);
   }
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Patch(":uuid")
   update(
     @Param("uuid", ParseUUIDPipe) uuid: string, 
@@ -42,6 +43,7 @@ export class VendedorController {
     return this.vendedorService.getSoldCarsBySellerId(uuid)
   }
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Post(":uuid")
   sellCar(
     @Param("uuid", ParseUUIDPipe) uuid: string, 

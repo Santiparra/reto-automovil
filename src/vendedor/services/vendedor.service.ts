@@ -19,11 +19,11 @@ export class VendedorService {
     private automovilService: AutomovilService,
   ) {}
 
-  sellers: Vendedor[];
+  sellers: Vendedor[] = [];
 
   createSeller(createVendedorDto: CreateVendedorDto): Vendedor {
     const newSeller = this.addId(createVendedorDto);
-
+    this.sellers.push(newSeller);
     return newSeller
   }
 
@@ -76,7 +76,7 @@ export class VendedorService {
   //esta funcion podria ser generica pero prefiero especificar la entidad retorno
   addId(sellerObj: CreateVendedorDto): Vendedor {
     const uuid = uuidv4();
-    let sellerWithId = {...sellerObj, id: uuid}
+    let sellerWithId = { id: uuid, ...sellerObj }
     return sellerWithId
   }
 

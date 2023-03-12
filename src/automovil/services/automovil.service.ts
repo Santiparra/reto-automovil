@@ -14,17 +14,21 @@ export class AutomovilService {
     private clienteService: ClienteService,
   ) {}
 
-  cars: Automovil[];
+  cars: Automovil[] = [];
 
   createCar(createAutomovilDto: CreateAutomovilDto): Automovil {
     const car = this.addId(createAutomovilDto);
+
+    //revisa si el seller esta bien y existe
+    //callback a crear vendedor si no existe
     
     //este llamado tiene multiple casos de uso, x ej si no existe aun el cliente
     //y a su vez si el cliente existe crear la referencia en la otra entidad 
     if(car.client) {
       const data: SellCarInfo = {carId: car.id, clientId: car.client[0].id}
-      this.assignCarToClient(data);
-    }
+      console.log(data)
+      //this.assignCarToClient(data);
+    } 
     this.cars.push(car)
     return car
   }
@@ -101,7 +105,7 @@ export class AutomovilService {
   //esta funcion podria ser generica pero prefiero especificar la entidad retorno
   addId(carObj: CreateAutomovilDto): Automovil {
     const uuid = uuidv4();
-    let carWithId = {...carObj, id: uuid}
+    let carWithId = { id: uuid, ...carObj }
     return carWithId
   }
 

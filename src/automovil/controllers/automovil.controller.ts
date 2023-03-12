@@ -1,5 +1,5 @@
 import { SellCarInfo } from './../../vendedor/dto/sell-car.dto';
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, ParseBoolPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, ParseBoolPipe, UsePipes, ValidationPipe } from '@nestjs/common';
 import { CreateAutomovilDto } from '../dto/create-automovil.dto';
 import { UpdateAutomovilDto } from '../dto/update-automovil.dto';
 import { AutomovilService } from '../services/automovil.service';
@@ -8,6 +8,7 @@ import { AutomovilService } from '../services/automovil.service';
 export class AutomovilController {
   constructor( private readonly automovilService: AutomovilService ) {}
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Post()
   create( @Body() createAutomovilDto: CreateAutomovilDto ) {
     return this.automovilService.createCar(createAutomovilDto);
@@ -18,7 +19,7 @@ export class AutomovilController {
     return this.automovilService.getAllCars();
   }
 
-  @Get()
+  @Get("/onsale")
   findAllCarsOnSale() {
     return this.automovilService.getCarsOnSale();
   }
@@ -27,7 +28,7 @@ export class AutomovilController {
   findOne( @Param('uuid', ParseUUIDPipe) uuid: string ) {
     return this.automovilService.getCarById(uuid);
   }
-
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Patch( ':uuid' )
   update( 
     @Param('uuid', ParseUUIDPipe) uuid: string, 
@@ -41,11 +42,13 @@ export class AutomovilController {
     return this.automovilService.deleteCar(uuid);
   }
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Patch('/assign')
   assign( @Body() assignInfo: SellCarInfo ) {
     return this.automovilService.assignCarToClient(assignInfo);
   }
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Patch(':uuid/:devolucion')
   unassign(
     @Param('uuid', ParseUUIDPipe) uuid: string, 

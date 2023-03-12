@@ -15,7 +15,7 @@ export class ClienteService {
     private automovilService: AutomovilService
   ) {}
 
-  clients: Cliente[];
+  clients: Cliente[] = [];
  
   createClient(createClienteDto: CreateClienteDto): Cliente {
     let createdClient = this.addId(createClienteDto);
@@ -68,7 +68,7 @@ export class ClienteService {
   //esta funcion podria ser generica pero prefiero especificar la entidad retorno
   addId(clientObj: CreateClienteDto): Cliente {
     const uuid = uuidv4();
-    let clientWithId = {...clientObj, id: uuid}
+    let clientWithId = { id: uuid, ...clientObj }
     return clientWithId
   }
 
