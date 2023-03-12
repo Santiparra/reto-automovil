@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe } from '@nestjs/common';
+import { SellCarInfo } from './../../vendedor/dto/sell-car.dto';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, ParseBoolPipe } from '@nestjs/common';
 import { CreateAutomovilDto } from '../dto/create-automovil.dto';
 import { UpdateAutomovilDto } from '../dto/update-automovil.dto';
 import { AutomovilService } from '../services/automovil.service';
@@ -40,20 +41,17 @@ export class AutomovilController {
     return this.automovilService.deleteCar(uuid);
   }
 
-  @Patch(':uuid')
-  assign(
-    @Param('uuid', ParseUUIDPipe) uuid: string, 
-    @Body() updateAutomovilDto: UpdateAutomovilDto
-    ) {
-    return this.automovilService.assignCarToClient(uuid, updateAutomovilDto);
+  @Patch('/assign')
+  assign( @Body() assignInfo: SellCarInfo ) {
+    return this.automovilService.assignCarToClient(assignInfo);
   }
 
-  @Patch(':uuid')
+  @Patch(':uuid/:devolucion')
   unassign(
     @Param('uuid', ParseUUIDPipe) uuid: string, 
-    @Body() updateAutomovilDto: UpdateAutomovilDto
+    @Param('devolucion', ParseBoolPipe) devolucion: boolean
     ) {
-    return this.automovilService.unassignCarFromClient(uuid, updateAutomovilDto);
+    return this.automovilService.unassignCarFromClient(uuid, devolucion);
   }
 
 }

@@ -3,7 +3,7 @@ import { AutomovilService } from './../../automovil/services/automovil.service';
 import { ClienteService } from './../../cliente/service/cliente.service';
 import { AutomovilInfoBasica } from './../../automovil/interfaces/car-basic-info.interface';
 import { Vendedor } from './../entities/vendedor.entity';
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { CreateVendedorDto } from '../dto/create-vendedor.dto';
 import { UpdateVendedorDto } from '../dto/update-vendedor.dto';
 import { v4 as uuidv4 } from 'uuid';
@@ -13,7 +13,9 @@ import { v4 as uuidv4 } from 'uuid';
 export class VendedorService {
 
   constructor (
+    @Inject(forwardRef(() => ClienteService))
     private clientService: ClienteService,
+    @Inject(forwardRef(() => AutomovilService))
     private automovilService: AutomovilService,
   ) {}
 

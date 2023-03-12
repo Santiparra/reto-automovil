@@ -1,13 +1,16 @@
 import { ClienteService } from './../../cliente/service/cliente.service';
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { CreateAutomovilDto } from '../dto/create-automovil.dto';
 import { UpdateAutomovilDto } from '../dto/update-automovil.dto';
 import { v4 as uuidv4 } from 'uuid';
 import { Automovil } from '../entities/automovil.entity';
+import { SellCarInfo } from 'src/vendedor/dto/sell-car.dto';
 
 @Injectable()
 export class AutomovilService {
+
   constructor (
+    @Inject(forwardRef(() => ClienteService))
     private clienteService: ClienteService,
   ) {}
 
@@ -18,8 +21,10 @@ export class AutomovilService {
     
     //este llamado tiene multiple casos de uso, x ej si no existe aun el cliente
     //y a su vez si el cliente existe crear la referencia en la otra entidad 
-    if(car.client) this.assignCarToClient(car, car.client[0].id);
-
+    if(car.client) {
+      const data: SellCarInfo = {carId: car.id, clientId: car.client[0].id}
+      this.assignCarToClient(data);
+    }
     this.cars.push(car)
     return car
   }
@@ -50,14 +55,14 @@ export class AutomovilService {
   }
 
   //falta implementar o notambien la relacion al metodo en el servicio vendedor
-  assignCarToClient(car: Automovil, clientId: string): Automovil {
-    let buyer = this.clienteService.getClientById(clientId);
-
+  assignCarToClient(assignInfo: SellCarInfo): Automovil {
+    let buyer = this.clienteService.getClientById(assignInfo.clientId);
+    const car = this.getCarById(assignInfo.carId)
     //por comodidad si no existe el cliente aca lo creamos, podriamos tirar error tambien
     
     if(!buyer) buyer = this.clienteService.createClient(car.client[0]);
 
-    this.clienteService.assignCarToClient(car, clientId);
+    this.clienteService.assignCarToClient(assignInfo);
     car.client = [buyer];
 
     const carExist = this.getCarById(car.id)

@@ -1,7 +1,9 @@
+import { SellCarInfo } from './../../vendedor/dto/sell-car.dto';
 import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe } from "@nestjs/common";
 import { CreateClienteDto } from "../dto/create-cliente.dto";
 import { UpdateClienteDto } from "../dto/update-cliente.dto";
-import { ClienteService } from "../service";
+import { ClienteService } from '../service/cliente.service';
+
 
 
 @Controller("cliente")
@@ -41,20 +43,15 @@ export class ClienteController {
     return this.clienteService.getClientCar(uuid)
   }
 
-  @Patch(":uuid")
+  @Patch("/assign")
   assign(
-    @Param("uuid", ParseUUIDPipe) uuid: string, 
-    @Body() updateClienteDto: UpdateClienteDto
-    ) {
-    return this.clienteService.assignCarToClient(uuid, updateClienteDto);
+    @Body() assignInfo: SellCarInfo ) {
+    return this.clienteService.assignCarToClient(assignInfo);
   }
 
   @Patch(":uuid")
-  unassign(
-    @Param("uuid", ParseUUIDPipe) uuid: string, 
-    @Body() updateClienteDto: UpdateClienteDto
-    ) {
-    return this.clienteService.unassignCarToClient(uuid, updateClienteDto);
+  unassign( @Param("uuid", ParseUUIDPipe) uuid: string ) {
+    return this.clienteService.unassignCarToClient(uuid);
   }
 
 }

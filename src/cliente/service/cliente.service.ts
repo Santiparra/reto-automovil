@@ -1,12 +1,19 @@
-import { Injectable } from '@nestjs/common';
+import { AutomovilService } from './../../automovil/services/automovil.service';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { CreateClienteDto } from '../dto/create-cliente.dto';
 import { UpdateClienteDto } from '../dto/update-cliente.dto';
 import { v4 as uuidv4 } from 'uuid';
 import { Cliente } from '../entities/cliente.entity';
 import { Automovil } from 'src/automovil/entities/automovil.entity';
+import { SellCarInfo } from 'src/vendedor/dto/sell-car.dto';
 
 @Injectable()
 export class ClienteService {
+
+  constructor (
+    @Inject(forwardRef(() => AutomovilService))
+    private automovilService: AutomovilService
+  ) {}
 
   clients: Cliente[];
  
@@ -43,8 +50,9 @@ export class ClienteService {
     return owner.bought_cars
   }
 
-  assignCarToClient(car: Automovil, clientId: string): Cliente {
-    const buyer = this.getClientById(clientId);
+  assignCarToClient(assignInfo: SellCarInfo): Cliente {
+    const buyer = this.getClientById(assignInfo.clientId);
+    const car = this.automovilService.getCarById(assignInfo.carId);
     buyer.bought_cars = [car];
     this.replaceClient(buyer);
     return buyer

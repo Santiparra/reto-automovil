@@ -1,13 +1,16 @@
-import { AutomovilService } from './../automovil/services/automovil.service';
+import { AutomovilModule } from './../automovil/automovil.module';
 import { ClienteModule } from './../cliente/cliente.module';
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { VendedorController } from './controllers/vendedor.controller';
 import { VendedorService } from './services/vendedor.service';
 
 @Module({
+  imports: [
+    forwardRef(() => ClienteModule), 
+    forwardRef(() => AutomovilModule)
+  ],
   controllers: [VendedorController],
   providers: [VendedorService],
-  exports: [VendedorService],
-  imports: [ClienteModule, AutomovilService,],
+  exports: [VendedorService],  
 })
 export class VendedorModule {}
