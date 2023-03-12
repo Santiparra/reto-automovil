@@ -1,5 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe } from "@nestjs/common";
+import { CreateAutomovilDto } from "src/automovil/dto/create-automovil.dto";
 import { CreateVendedorDto } from "../dto/create-vendedor.dto";
+import { SellCarInfo } from "../dto/sell-car.dto";
 import { UpdateVendedorDto } from "../dto/update-vendedor.dto";
 import { VendedorService } from "../services/vendedor.service";
 
@@ -41,11 +43,11 @@ export class VendedorController {
   }
 
   @Post(":uuid")
-  soldCar(
+  sellCar(
     @Param("uuid", ParseUUIDPipe) uuid: string, 
-    @Body() createVendedorDto: CreateVendedorDto
+    @Body() sellingData: SellCarInfo
     ) {
-    return this.vendedorService.addSoldCar(uuid, createVendedorDto);
+    return this.vendedorService.addSoldCar(uuid, sellingData);
   }
 
 }

@@ -39,6 +39,7 @@ export class AutomovilService {
   updateCar(id: string, updateAutomovilDto: UpdateAutomovilDto): Automovil {
     let carToUpdate = this.getCarById(id);
     carToUpdate = {...carToUpdate, ...updateAutomovilDto};
+    this.replaceCar(carToUpdate);
     return carToUpdate
   }
 
@@ -64,8 +65,7 @@ export class AutomovilService {
     //si la llamada viene del controlador, o sea, el auto ya existe 
 
     if(carExist) {
-      const index = this.cars.indexOf ( car )
-      this.cars.splice(index, 1, car)
+      this.replaceCar(car);
       return car
     }
 
@@ -83,8 +83,7 @@ export class AutomovilService {
     const carToSwap = this.getCarById(carId);
     if (devolucion === true) {
       carToSwap.client = null;
-      const index = this.cars.indexOf ( carToSwap );
-      this.cars.splice(index, 1, carToSwap);
+      this.replaceCar(carToSwap);
       return carToSwap
     }
     //aca te quedaste, revisa la logica xfa
@@ -101,4 +100,9 @@ export class AutomovilService {
     return carWithId
   }
 
+  //helper function para mantener el codigo dry
+  replaceCar(car: Automovil): void {
+    const index = this.cars.indexOf(car);
+    this.cars.splice(index, 1, car);
+  }
 }

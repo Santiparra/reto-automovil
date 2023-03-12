@@ -7,5 +7,6 @@ import { AutomovilService } from './services/automovil.service';
   imports: [VendedorModule],
   controllers: [AutomovilController],
   providers: [AutomovilService],
+  exports: [AutomovilService],
 })
 export class AutomovilModule {}
