@@ -9,7 +9,7 @@ import { SellCarInfo } from 'src/vendedor/dto/sell-car.dto';
 
 @Injectable()
 export class ClienteService {
-
+    
   constructor (
     @Inject(forwardRef(() => AutomovilService))
     private automovilService: AutomovilService
@@ -53,7 +53,8 @@ export class ClienteService {
   assignCarToClient(assignInfo: SellCarInfo): Cliente {
     const buyer = this.getClientById(assignInfo.clientId);
     const car = this.automovilService.getCarById(assignInfo.carId);
-    buyer.bought_cars = [car];
+    const {client, ...rest} = car
+    buyer.bought_cars = [rest];
     this.replaceClient(buyer);
     return buyer
   }
@@ -76,5 +77,32 @@ export class ClienteService {
     const index = this.clients.indexOf( client );
     this.clients.splice(index, 1, client)
   }
- 
+
+  handleNewClient(car: Automovil): Cliente {
+    let newClient: Cliente = {
+      name: car.client[0].name,
+      id: uuidv4(),
+      bought_cars: [
+        {
+          id: car.id,
+          brand: car.brand,
+          model: car.model,
+          year: car.year,
+          seller: [{
+            id: car.seller[0].id,
+            name: car.seller[0].name,
+            sold_cars: car.seller[0].sold_cars
+          }]
+        }
+      ]   
+    }
+    this.clients.push(newClient);
+    return newClient
+  }
+
+  validateClient(name: string): boolean {
+    if ( !name || typeof name !== 'string' ) return false;
+    if ( name.length > 0 ) return true;
+  }
+
 }

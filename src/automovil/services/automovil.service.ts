@@ -1,5 +1,6 @@
+import { VendedorService } from './../../vendedor/services/vendedor.service';
 import { ClienteService } from './../../cliente/service/cliente.service';
-import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { CreateAutomovilDto } from '../dto/create-automovil.dto';
 import { UpdateAutomovilDto } from '../dto/update-automovil.dto';
 import { v4 as uuidv4 } from 'uuid';
@@ -12,23 +13,38 @@ export class AutomovilService {
   constructor (
     @Inject(forwardRef(() => ClienteService))
     private clienteService: ClienteService,
+    @Inject(forwardRef(() => VendedorService))
+    private vendedorService: VendedorService
   ) {}
 
   cars: Automovil[] = [];
 
   createCar(createAutomovilDto: CreateAutomovilDto): Automovil {
+    /* NOTA IMPORTANTE: no estoy seguro de si deberia implementar esta funcion o no,
+    mas alla de que podria acortarla y eso, no creo que sea buena idea crear 3 entidades
+    desde una sola funcion, la hice porque me colgó y a modo de ejercitar logica.
+    Es evidente que en vez de crear entidades podria tirar error simplemente  */
+
     const car = this.addId(createAutomovilDto);
 
-    //revisa si el seller esta bien y existe
-    //callback a crear vendedor si no existe
-    
-    //este llamado tiene multiple casos de uso, x ej si no existe aun el cliente
-    //y a su vez si el cliente existe crear la referencia en la otra entidad 
+    //nuevamente verificamos si el cliente existe y si no lo validamos y creamos
     if(car.client) {
-      const data: SellCarInfo = {carId: car.id, clientId: car.client[0].id}
-      console.log(data)
-      //this.assignCarToClient(data);
+      const clientFound = this.clienteService.getClientById(car.client[0].id); 
+      if ( !clientFound && this.clienteService.validateClient(car.client[0].name) === true) {
+        const newClient = this.clienteService.handleNewClient(car);
+        car.client[0].id = newClient.id;
+      }
     } 
+    
+    //revisa si el seller esta bien y existe. Si no existe lo creo en el otro modulo
+    const sellerFound = this.vendedorService.getSellerById(car.seller[0].id);
+    falta esta pieza de logica
+    //if (sellerFound) this.vendedorService.addSoldCar(sellerFound.id)
+    if ( !sellerFound && this.vendedorService.validateSeller(car.seller[0].name) === true) {
+       const newSeller = this.vendedorService.handleNewSeller(car);
+       car.seller[0].id = newSeller.id;
+    };    
+    
     this.cars.push(car)
     return car
   }
@@ -58,28 +74,18 @@ export class AutomovilService {
     return carToDelete
   }
 
-  //falta implementar o notambien la relacion al metodo en el servicio vendedor
   assignCarToClient(assignInfo: SellCarInfo): Automovil {
     let buyer = this.clienteService.getClientById(assignInfo.clientId);
-    const car = this.getCarById(assignInfo.carId)
-    //por comodidad si no existe el cliente aca lo creamos, podriamos tirar error tambien
-    
-    if(!buyer) buyer = this.clienteService.createClient(car.client[0]);
+    const car = this.getCarById(assignInfo.carId);
+        
+    if(!car) throw new HttpException("Este auto no existe", HttpStatus.NOT_FOUND);
+    if(!buyer) throw new HttpException("Este cliente no existe", HttpStatus.NOT_FOUND);
+
+    car.client.splice(0, car.client.length);
+    car.client[0] = {id: buyer.id, name: buyer.name};  
+    this.replaceCar(car);
 
     this.clienteService.assignCarToClient(assignInfo);
-    car.client = [buyer];
-
-    const carExist = this.getCarById(car.id)
-
-    //si la llamada viene del controlador, o sea, el auto ya existe 
-
-    if(carExist) {
-      this.replaceCar(car);
-      return car
-    }
-
-    //si es un callback al crear el auto lo devolvemos para que pushee
-
     return car
   }
   
@@ -87,19 +93,15 @@ export class AutomovilService {
   si es una devolucion simplemente quito al cliente
   de lo contrario asigo al antiguo comprador como actual vendedor */
 
-  
-  unassignCarFromClient(carId: string, devolucion: boolean): Automovil {
+  ///refacttoriza esto
+  unassignCarFromClient(carId: string): Automovil {
     const carToSwap = this.getCarById(carId);
-    if (devolucion === true) {
-      carToSwap.client = null;
-      this.replaceCar(carToSwap);
-      return carToSwap
-    }
-    //aca te quedaste, revisa la logica xfa
-    carToSwap.seller[0].id = carToSwap.client[0].id;
-    carToSwap.seller[0].name = carToSwap.client[0].name;
-    carToSwap.seller[0].sold_cars = carToSwap.client[0].sold_cars;
+    if (!carToSwap) throw new HttpException("el auto no existe", HttpStatus.NOT_FOUND)
+    this.clienteService.unassignCarToClient(carToSwap.client[0].id);
+    this.vendedorService.unassignCarFromSeller(carToSwap);
     carToSwap.client = null;
+    this.replaceCar(carToSwap);
+    return carToSwap
     }
 
   //esta funcion podria ser generica pero prefiero especificar la entidad retorno

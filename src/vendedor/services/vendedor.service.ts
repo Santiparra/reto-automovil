@@ -7,11 +7,12 @@ import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { CreateVendedorDto } from '../dto/create-vendedor.dto';
 import { UpdateVendedorDto } from '../dto/update-vendedor.dto';
 import { v4 as uuidv4 } from 'uuid';
+import { Automovil } from 'src/automovil/entities/automovil.entity';
 
 
 @Injectable()
 export class VendedorService {
-
+      
   constructor (
     @Inject(forwardRef(() => ClienteService))
     private clientService: ClienteService,
@@ -23,6 +24,10 @@ export class VendedorService {
 
   createSeller(createVendedorDto: CreateVendedorDto): Vendedor {
     const newSeller = this.addId(createVendedorDto);
+    const carExist = this.automovilService.getCarById(newSeller.sold_cars[0].id);
+    if (!carExist) {
+      
+    }
     this.sellers.push(newSeller);
     return newSeller
   }
@@ -62,7 +67,7 @@ export class VendedorService {
     return cleanInfo
   }
   
-  addSoldCar(uuid: string, info: SellCarInfo) {
+  addSoldCar(uuid: string, info?: SellCarInfo) {
     const car = this.automovilService.getCarById(info.carId);
     const buyer = this.clientService.getClientById(info.clientId);
     const seller = this.getSellerById(uuid);
@@ -84,5 +89,37 @@ export class VendedorService {
     const index = this.sellers.indexOf( seller );
     this.sellers.splice(index, 1, seller)
   }
-  
+
+  unassignCarFromSeller(car: Automovil): Vendedor {
+    const sellerFound = this.getSellerById(car.seller[0].id);
+    sellerFound.sold_cars = sellerFound.sold_cars.filter(soldCars => soldCars.id !== car.id);
+    this.replaceSeller(sellerFound);
+    return sellerFound;
+  }  
+
+  //esta funcion se encarga de crear nuevos vendedores cuando la llamada viene de fuera
+  handleNewSeller(car: Automovil): Vendedor {
+    let newSeller: Vendedor = {
+      name: car.seller[0].name,
+      id: uuidv4(),
+      sold_cars: [
+        {
+          id: car.id,
+          brand: car.brand,
+          model: car.model,
+          year: car.year,
+          seller: [null]
+        }
+      ]   
+    }
+    if(car.client) newSeller.sold_cars[0].client = car.client;
+    this.sellers.push(newSeller);
+    return newSeller
+  }
+
+  validateSeller(name: string): boolean {
+    if ( !name || typeof name !== 'string' ) return false;
+    if ( name.length > 0 ) return true;
+  }
+
 }

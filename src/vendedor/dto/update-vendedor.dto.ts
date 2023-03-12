@@ -5,6 +5,5 @@ import { CreateVendedorDto } from './create-vendedor.dto';
 export class UpdateVendedorDto extends PartialType(CreateVendedorDto) {
     @IsString()
     @IsNotEmpty()
-    @IsOptional()
-    name?: string;
+    name: string;
 }

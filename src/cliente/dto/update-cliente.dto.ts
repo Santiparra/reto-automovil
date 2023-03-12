@@ -4,8 +4,7 @@ import { CreateClienteDto } from './create-cliente.dto';
 
 export class UpdateClienteDto extends PartialType(CreateClienteDto) {
     
-    @IsOptional()
     @IsString()
     @IsNotEmpty()
-    name?: string;
+    name: string;
 }
