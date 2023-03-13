@@ -1,4 +1,4 @@
-import { Cliente } from "src/cliente/entities/cliente.entity";
+import { Cliente } from "src/cliente/interfaces/cliente.interface";
 
 export interface AutomovilInfoBasica {
 

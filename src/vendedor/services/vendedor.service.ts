@@ -2,12 +2,12 @@ import { SellCarInfo } from './../dto/sell-car.dto';
 import { AutomovilService } from './../../automovil/services/automovil.service';
 import { ClienteService } from './../../cliente/service/cliente.service';
 import { AutomovilInfoBasica } from './../../automovil/interfaces/car-basic-info.interface';
-import { Vendedor } from './../entities/vendedor.entity';
-import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import { Vendedor } from '../interfaces/vendedor.interface';
+import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { CreateVendedorDto } from '../dto/create-vendedor.dto';
 import { UpdateVendedorDto } from '../dto/update-vendedor.dto';
 import { v4 as uuidv4 } from 'uuid';
-import { Automovil } from 'src/automovil/entities/automovil.entity';
+import { Automovil } from 'src/automovil/interfaces/automovil.interface';
 
 
 @Injectable()
@@ -34,11 +34,17 @@ export class VendedorService {
   }
 
   getSellerById(uuid: string): Vendedor {
-    return this.sellers.find(seller => seller.id === uuid);
+    const foundSeller = this.sellers.find(seller => seller.id === uuid);
+    return foundSeller
   }
 
   updateSeller(uuid: string, updateVendedorDto: UpdateVendedorDto): Vendedor {
     let changedSeller = this.getSellerById(uuid);
+    if (!changedSeller)  {
+      throw new HttpException(
+        "No hay ningun vendedor con esta id", 
+        HttpStatus.NOT_FOUND)
+    };
     changedSeller = {...changedSeller, ...updateVendedorDto};
     this.replaceSeller(changedSeller);
     return changedSeller
@@ -46,6 +52,11 @@ export class VendedorService {
 
   deleteSeller(id: string): Vendedor {
     const sellerToDelete = this.getSellerById(id);
+    if (!sellerToDelete)  {
+      throw new HttpException(
+        "No hay ningun vendedor con esta id en nuestra base de datos", 
+        HttpStatus.NOT_FOUND)
+    };
     this.sellers = this.sellers.filter(seller => seller.id !== id);
     return sellerToDelete
   }
@@ -56,6 +67,11 @@ export class VendedorService {
   interceptor o poner que la propiedad vendedor fuese opcional en automovil */
   getSoldCarsBySellerId(uuid: string): AutomovilInfoBasica[] {
     const sellerFound = this.getSellerById(uuid);
+    if (!sellerFound) {
+      throw new HttpException(
+        "No hay ningun vendedor con esta id", 
+        HttpStatus.NOT_FOUND)
+    };
     let cleanInfo: AutomovilInfoBasica[] = [];
     sellerFound.sold_cars.forEach(sold_car => {
       const { seller, ...rest } = sold_car;
@@ -66,10 +82,20 @@ export class VendedorService {
      
   addSoldCar(uuid: string, info: SellCarInfo): Vendedor {
     const car = this.automovilService.getCarById(info.carId);    
+    if (!car)  {
+      throw new HttpException(
+        "No hay ningun automovil con esta id", 
+        HttpStatus.BAD_REQUEST)
+    };
     const seller = this.getSellerById(uuid);
+    if (!seller)  {
+      throw new HttpException(
+        "No hay ningun vendedor con esta id", 
+        HttpStatus.NOT_FOUND)
+    };
     car.seller[0].id = uuid;
-    car.seller[0].name = seller.name
-    this.clientService.setSeller(car);
+    car.seller[0].name = seller.name;
+    this.clientService.setSeller(car, info.clientId);
     seller.sold_cars.push(car);
     this.replaceSeller(seller);
     return seller
@@ -84,11 +110,17 @@ export class VendedorService {
 
   replaceSeller(seller: Vendedor): void {
     const index = this.sellers.indexOf( seller );
+    if ( index === -1 ) throw new Error ("Hubo un error en nuestra base de datos");
     this.sellers.splice(index, 1, seller)
   }
 
   unassignCarFromSeller(car: Automovil): Vendedor {
     const sellerFound = this.getSellerById(car.seller[0].id);
+    if (!sellerFound) {
+      throw new HttpException(
+        "No hay ningun vendedor con esta id", 
+        HttpStatus.NOT_FOUND)
+    };
     sellerFound.sold_cars = sellerFound.sold_cars.filter(soldCars => soldCars.id !== car.id);
     this.replaceSeller(sellerFound);
     return sellerFound;

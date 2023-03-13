@@ -1,4 +1,3 @@
-import { SellCarInfo } from './../../vendedor/dto/sell-car.dto';
 import { 
   Controller, 
   Get, 
@@ -8,16 +7,17 @@ import {
   Param, 
   Delete, 
   ParseUUIDPipe,
-  ParseBoolPipe, 
   UsePipes, 
   ValidationPipe 
 } from '@nestjs/common';
 import { CreateAutomovilDto } from '../dto/create-automovil.dto';
 import { UpdateAutomovilDto } from '../dto/update-automovil.dto';
 import { AutomovilService } from '../services/automovil.service';
+import { SellCarInfo } from './../../vendedor/dto/sell-car.dto';
 
 @Controller('automovil')
 export class AutomovilController {
+  
   constructor( private readonly automovilService: AutomovilService ) {}
 
   @UsePipes(new ValidationPipe({ whitelist: true }))

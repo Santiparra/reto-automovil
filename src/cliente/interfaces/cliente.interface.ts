@@ -1,9 +1,9 @@
-import { Automovil } from './../../automovil/entities/automovil.entity';
+import { Automovil } from '../../automovil/interfaces/automovil.interface';
 
 /* agregue el array de autos vendidos como opcional dado que un vendedor 
 y cliente ambos tienen capacidad de compra-venta */
 
-export class Cliente {
+export interface Cliente {
 
     id: string;
     name: string;

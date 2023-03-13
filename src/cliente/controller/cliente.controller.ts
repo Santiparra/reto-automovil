@@ -1,11 +1,23 @@
+import { 
+  Controller, 
+  Get, 
+  Post, 
+  Body, 
+  Patch, 
+  Param, 
+  Delete, 
+  ParseUUIDPipe, 
+  UsePipes, 
+  ValidationPipe 
+} from "@nestjs/common";
 import { SellCarInfo } from './../../vendedor/dto/sell-car.dto';
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, UsePipes, ValidationPipe } from "@nestjs/common";
 import { CreateClienteDto } from "../dto/create-cliente.dto";
 import { UpdateClienteDto } from "../dto/update-cliente.dto";
 import { ClienteService } from '../service/cliente.service';
 
 @Controller("cliente")
 export class ClienteController {
+  
   constructor(private readonly clienteService: ClienteService) { }
 
   @UsePipes(new ValidationPipe({ whitelist: true }))
@@ -54,9 +66,8 @@ export class ClienteController {
   @Post(":uuid")
   unassign( 
     @Param("uuid", ParseUUIDPipe) uuid: string,
-    @Body() assignInfo: SellCarInfo
     ) {
-    return this.clienteService.unassignCarToClient(uuid, assignInfo.carId);
+    return this.clienteService.unassignCarToClient(uuid);
   }
 
 }

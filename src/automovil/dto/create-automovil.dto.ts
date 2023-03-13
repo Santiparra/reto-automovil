@@ -1,6 +1,6 @@
-import { Vendedor } from './../../vendedor/entities/vendedor.entity';
+import { Vendedor } from '../../vendedor/interfaces/vendedor.interface';
 import { IsArray, IsInt, IsNotEmpty, IsOptional, IsString } from "class-validator";
-import { Cliente } from 'src/cliente/entities/cliente.entity';
+import { Cliente } from 'src/cliente/interfaces/cliente.interface';
 
 export class CreateAutomovilDto {
      

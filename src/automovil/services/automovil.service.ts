@@ -4,7 +4,7 @@ import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nest
 import { CreateAutomovilDto } from '../dto/create-automovil.dto';
 import { UpdateAutomovilDto } from '../dto/update-automovil.dto';
 import { v4 as uuidv4 } from 'uuid';
-import { Automovil } from '../entities/automovil.entity';
+import { Automovil } from '../interfaces/automovil.interface';
 import { SellCarInfo } from 'src/vendedor/dto/sell-car.dto';
 
 @Injectable()
@@ -32,6 +32,9 @@ export class AutomovilService {
       const clientFound = this.clienteService.getClientById(car.client[0].id); 
       if ( !clientFound && this.clienteService.validateClient(car.client[0].name) === true) {
         const newClient = this.clienteService.handleNewClient(car);
+        if (!newClient) throw new HttpException(
+          "Lo sentimos no existe cliente con esta id y los datos no son suficientes como para crearlo",
+          HttpStatus.BAD_REQUEST);
         car.client[0].id = newClient.id;
       }      
     } 
@@ -40,8 +43,13 @@ export class AutomovilService {
     const sellerFound = this.vendedorService.getSellerById(car.seller[0].id);     
     if ( !sellerFound && this.vendedorService.validateSeller(car.seller[0].name) === true) {
        const newSeller = this.vendedorService.handleNewSeller(car);
-       car.seller[0].id = newSeller.id;
+       if (!newSeller) throw new HttpException(
+        "Lo sentimos no existe vendedor con esta id y los datos no son suficientes como para crearlo",
+        HttpStatus.BAD_REQUEST);
+        car.seller[0].id = newSeller.id;
+       if (car.client) this.clienteService.setSeller(car, car.client[0].id);
     };    
+    if(!car.client) car.client = [null]
     this.cars.push(car);    
     if (sellerFound && car.client) {      
       const sellInfo: SellCarInfo = { carId: car.id, clientId: car.client[0].id };
@@ -55,7 +63,8 @@ export class AutomovilService {
   }
 
   getCarById(id: string): Automovil {
-    return this.cars.find(car => car.id === id);
+    const foundCar = this.cars.find(car => car.id === id);
+    return foundCar
   }
 
   getCarsOnSale(): Automovil[] {
@@ -64,6 +73,9 @@ export class AutomovilService {
 
   updateCar(id: string, updateAutomovilDto: UpdateAutomovilDto): Automovil {
     let carToUpdate = this.getCarById(id);
+    if (!carToUpdate) throw new HttpException(
+      "Lo sentimos no existe automovil con esta id",
+      HttpStatus.NOT_FOUND);
     carToUpdate = {...carToUpdate, ...updateAutomovilDto};
     this.replaceCar(carToUpdate);
     return carToUpdate
@@ -71,22 +83,22 @@ export class AutomovilService {
 
   deleteCar(id: string): Automovil {
     const carToDelete = this.getCarById(id);
+    if (!carToDelete) throw new HttpException(
+      "No tenemos ningun automovil registrado con esta id",
+      HttpStatus.NOT_FOUND);
     this.cars = this.cars.filter(car => car.id !== id);
     return carToDelete
   }
 
   assignCarToClient(assignInfo: SellCarInfo): Automovil {
     let buyer = this.clienteService.getClientById(assignInfo.clientId);
-    const car = this.getCarById(assignInfo.carId);
-        
+    const car = this.getCarById(assignInfo.carId);        
     if(!car) throw new HttpException("Este auto no existe", HttpStatus.NOT_FOUND);
     if(!buyer) throw new HttpException("Este cliente no existe", HttpStatus.NOT_FOUND);
-
-    car.client.splice(0, car.client.length);
+    car.client = [];
     car.client[0] = {id: buyer.id, name: buyer.name};  
     this.replaceCar(car);
-
-    this.clienteService.assignCarToClient(assignInfo);
+    this.clienteService.assignCarToNewClient(assignInfo);
     this.vendedorService.addSoldCar(car.seller[0].id, assignInfo);
     return car
   }
@@ -95,11 +107,10 @@ export class AutomovilService {
   si es una devolucion simplemente quito al cliente
   de lo contrario asigo al antiguo comprador como actual vendedor */
 
-  ///refacttoriza esto
   unassignCarFromClient(carId: string): Automovil {
     const carToSwap = this.getCarById(carId);
     if (!carToSwap) throw new HttpException("el auto no existe", HttpStatus.NOT_FOUND)
-    this.clienteService.unassignCarToClient(carToSwap.client[0].id, carId);
+    this.clienteService.unassignCarToClientGlobal(carToSwap.client[0].id, carId);
     this.vendedorService.unassignCarFromSeller(carToSwap);
     carToSwap.client = [null];
     this.replaceCar(carToSwap);
@@ -116,6 +127,7 @@ export class AutomovilService {
   //helper function para mantener el codigo dry
   replaceCar(car: Automovil): void {
     const index = this.cars.indexOf(car);
+    if ( index === -1 ) throw new Error ("Hubo un error en nuestra base de datos");
     this.cars.splice(index, 1, car);
   }
 }
