@@ -8,7 +8,8 @@ import {
   Delete, 
   ParseUUIDPipe,
   UsePipes, 
-  ValidationPipe 
+  ValidationPipe, 
+  Logger
 } from '@nestjs/common';
 import { CreateAutomovilDto } from '../dto/create-automovil.dto';
 import { UpdateAutomovilDto } from '../dto/update-automovil.dto';
@@ -18,6 +19,8 @@ import { SellCarInfo } from './../../vendedor/dto/sell-car.dto';
 @Controller('automovil')
 export class AutomovilController {
   
+  private readonly logger = new Logger(AutomovilController.name);
+
   constructor( private readonly automovilService: AutomovilService ) {}
 
   @UsePipes(new ValidationPipe({ whitelist: true }))
@@ -28,6 +31,7 @@ export class AutomovilController {
 
   @Get()
   findAll() {
+    this.logger.log("Buscando Automoviles");
     return this.automovilService.getAllCars();
   }
 

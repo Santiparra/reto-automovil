@@ -8,7 +8,8 @@ import {
   Delete, 
   ParseUUIDPipe, 
   UsePipes, 
-  ValidationPipe 
+  ValidationPipe, 
+  Logger
 } from "@nestjs/common";
 import { CreateVendedorDto } from "../dto/create-vendedor.dto";
 import { SellCarInfo } from "../dto/sell-car.dto";
@@ -18,6 +19,8 @@ import { VendedorService } from "../services/vendedor.service";
 @Controller("vendedor")
 export class VendedorController {
   
+  private readonly logger = new Logger(VendedorController.name);
+
   constructor(private readonly vendedorService: VendedorService) {}
 
   @UsePipes(new ValidationPipe({ whitelist: true }))

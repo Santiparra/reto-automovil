@@ -1,0 +1,26 @@
+Version Local:
+
+    - Añadir Logs para Pino
+    - Dividir funciones largas
+    - Mejorar las excepciones
+    - Añadir Autentificacion?
+
+Version Mysql :
+
+    - Definir entidades
+    - Crear Tablas
+    - Registrar entidades para tokens de Repos
+    - Definir Rutas
+    - Dar logica a los Metodos
+    - Excepciones
+    - Nueva coleccion Postman
+
+Version Mongo :
+
+    - Definir Esquemas
+    - Importacion mongoose
+    - Definir Rutas
+    - Dar logica a los Metodos
+    - Excepciones
+    - Nueva coleccion Postman    
+
