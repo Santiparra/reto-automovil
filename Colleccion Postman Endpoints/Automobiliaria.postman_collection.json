@@ -58,15 +58,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "471"
+									"value": "235"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"1d7-ccpqv9OswfZBEfaZwtuTAE/M19U\""
+									"value": "W/\"eb-x3eCQZOwJLBsAxGD9Sfwlmfow3Q\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 16:36:35 GMT"
+									"value": "Mon, 13 Mar 2023 18:08:38 GMT"
 								},
 								{
 									"key": "Connection",
@@ -78,7 +78,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"year\": 2022,\n        \"seller\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"Pepe\"\n            }\n        ],\n        \"client\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"juan\"\n            }\n        ]\n    },\n    {\n        \"id\": \"8bfc63bf-ac9b-4097-914d-9ff1178d1d19\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"year\": 2022,\n        \"seller\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"Pepe\"\n            }\n        ],\n        \"client\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"juan\"\n            }\n        ]\n    },\n    {\n        \"id\": \"71922f05-1ad3-4573-a033-9dc5a6bc918b\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"year\": 2022,\n        \"seller\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"Pepe\"\n            }\n        ],\n        \"client\": [\n            {}\n        ]\n    }\n]"
+							"body": "[\n    {\n        \"id\": \"c46b4609-0d50-4bd0-b1df-fb8ddfed790f\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"year\": 2022,\n        \"seller\": [\n            {\n                \"id\": \"20c266ec-847a-444f-aad8-a6a14418e337\",\n                \"name\": \"Pepe\"\n            }\n        ],\n        \"client\": [\n            {\n                \"id\": \"c47a5c38-5a0e-4fc9-9669-bde10dcf5458\",\n                \"name\": \"juan\"\n            }\n        ]\n    }\n]"
 						}
 					]
 				},
@@ -107,7 +107,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/automovil/5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7",
+									"raw": "http://localhost:3000/automovil/f61b251d-fe12-4c34-84ed-7cec93c27dc4",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -115,7 +115,7 @@
 									"port": "3000",
 									"path": [
 										"automovil",
-										"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7"
+										"f61b251d-fe12-4c34-84ed-7cec93c27dc4"
 									]
 								}
 							},
@@ -133,15 +133,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "163"
+									"value": "233"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"a3-+KORix+VR0DaKBcfks+IZE6xWnc\""
+									"value": "W/\"e9-EHuMCTEN5qV1q+w9En3dZhnmnzk\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 16:37:03 GMT"
+									"value": "Mon, 13 Mar 2023 18:18:11 GMT"
 								},
 								{
 									"key": "Connection",
@@ -153,7 +153,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"year\": 2022,\n    \"seller\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"Pepe\"\n        }\n    ],\n    \"client\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"juan\"\n        }\n    ]\n}"
+							"body": "{\n    \"id\": \"f61b251d-fe12-4c34-84ed-7cec93c27dc4\",\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"year\": 2022,\n    \"seller\": [\n        {\n            \"id\": \"23e121bd-c04d-487c-8a82-71aba3793d95\",\n            \"name\": \"Pepe\"\n        }\n    ],\n    \"client\": [\n        {\n            \"id\": \"46a1566a-fb96-417b-9c39-a6e5bbfca78d\",\n            \"name\": \"juan\"\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -208,15 +208,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "129"
+									"value": "164"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"81-LRMMXylpnL+7aG5h31hlBnNe+Kc\""
+									"value": "W/\"a4-p6X/+An33jAHdohjhCe4xITQXZ0\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 16:39:42 GMT"
+									"value": "Mon, 13 Mar 2023 18:23:43 GMT"
 								},
 								{
 									"key": "Connection",
@@ -228,7 +228,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"id\": \"1c64abae-1afb-42d0-8eaa-08d393a750ac\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"year\": 2022,\n        \"seller\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"Pepe\"\n            }\n        ]\n    }\n]"
+							"body": "[\n    {\n        \"id\": \"32b76251-ff3b-4d59-aa41-d569f2c28447\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"year\": 2022,\n        \"seller\": [\n            {\n                \"id\": \"cffb273c-38f2-4c49-b961-bed8f2d16dfe\",\n                \"name\": \"Pepe\"\n            }\n        ]\n    }\n]"
 						}
 					]
 				},
@@ -266,7 +266,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"year\": 2022,  \n    \"seller\": [\n        {\n        \"id\": \"1\",\n        \"name\": \"Pepe\"\n        }    \n    ]\n    \n\n}",
+									"raw": "{\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"year\": 2022,  \n    \"seller\": [\n        {\n        \"id\": \"1\",\n        \"name\": \"Pepe\"\n        }    \n    ]\n\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -299,15 +299,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "127"
+									"value": "162"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"7f-tFk9twnEuxGzWZ1Yd7qosII175Y\""
+									"value": "W/\"a2-AcccXbvN1RQ280DmjkoEDE7hhhY\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 16:27:11 GMT"
+									"value": "Mon, 13 Mar 2023 18:23:31 GMT"
 								},
 								{
 									"key": "Connection",
@@ -319,7 +319,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"613116c6-d999-4870-808c-b1f89bc786bb\",\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"year\": 2022,\n    \"seller\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"Pepe\"\n        }\n    ]\n}"
+							"body": "{\n    \"id\": \"32b76251-ff3b-4d59-aa41-d569f2c28447\",\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"year\": 2022,\n    \"seller\": [\n        {\n            \"id\": \"cffb273c-38f2-4c49-b961-bed8f2d16dfe\",\n            \"name\": \"Pepe\"\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -390,15 +390,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "141"
+									"value": "233"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"8d-2C8GBYfkwW5x9kimhFRJgmR1mrQ\""
+									"value": "W/\"e9-i88SlfEjQMccBhUImXYwuq48blo\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 16:34:55 GMT"
+									"value": "Mon, 13 Mar 2023 18:08:18 GMT"
 								},
 								{
 									"key": "Connection",
@@ -410,7 +410,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"71922f05-1ad3-4573-a033-9dc5a6bc918b\",\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"year\": 2022,\n    \"seller\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"Pepe\"\n        }\n    ],\n    \"client\": [\n        {}\n    ]\n}"
+							"body": "{\n    \"id\": \"c46b4609-0d50-4bd0-b1df-fb8ddfed790f\",\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"year\": 2022,\n    \"seller\": [\n        {\n            \"id\": \"20c266ec-847a-444f-aad8-a6a14418e337\",\n            \"name\": \"Pepe\"\n        }\n    ],\n    \"client\": [\n        {\n            \"id\": \"c47a5c38-5a0e-4fc9-9669-bde10dcf5458\",\n            \"name\": \"juan\"\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -457,7 +457,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/automovil/5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7",
+									"raw": "http://localhost:3000/automovil/32b76251-ff3b-4d59-aa41-d569f2c28447",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -465,7 +465,7 @@
 									"port": "3000",
 									"path": [
 										"automovil",
-										"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7"
+										"32b76251-ff3b-4d59-aa41-d569f2c28447"
 									]
 								}
 							},
@@ -483,15 +483,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "158"
+									"value": "157"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"9e-0jgV3JwuDCXK9VXCes3ESIn/PBA\""
+									"value": "W/\"9d-4R2gvgPDCbdjg4RpThPMaVskh0k\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 16:42:14 GMT"
+									"value": "Mon, 13 Mar 2023 18:24:42 GMT"
 								},
 								{
 									"key": "Connection",
@@ -503,7 +503,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n    \"brand\": \"fiat\",\n    \"model\": \"uno\",\n    \"year\": 2022,\n    \"seller\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"Pepe\"\n        }\n    ],\n    \"client\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"juan\"\n        }\n    ]\n}"
+							"body": "{\n    \"id\": \"32b76251-ff3b-4d59-aa41-d569f2c28447\",\n    \"brand\": \"fiat\",\n    \"model\": \"uno\",\n    \"year\": 2022,\n    \"seller\": [\n        {\n            \"id\": \"cffb273c-38f2-4c49-b961-bed8f2d16dfe\",\n            \"name\": \"Pepe\"\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -532,7 +532,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/automovil/71922f05-1ad3-4573-a033-9dc5a6bc918b",
+									"raw": "http://localhost:3000/automovil/32b76251-ff3b-4d59-aa41-d569f2c28447",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -540,7 +540,7 @@
 									"port": "3000",
 									"path": [
 										"automovil",
-										"71922f05-1ad3-4573-a033-9dc5a6bc918b"
+										"32b76251-ff3b-4d59-aa41-d569f2c28447"
 									]
 								}
 							},
@@ -558,15 +558,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "141"
+									"value": "157"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"8d-2C8GBYfkwW5x9kimhFRJgmR1mrQ\""
+									"value": "W/\"9d-4R2gvgPDCbdjg4RpThPMaVskh0k\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 16:43:33 GMT"
+									"value": "Mon, 13 Mar 2023 18:25:06 GMT"
 								},
 								{
 									"key": "Connection",
@@ -578,7 +578,183 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"71922f05-1ad3-4573-a033-9dc5a6bc918b\",\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"year\": 2022,\n    \"seller\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"Pepe\"\n        }\n    ],\n    \"client\": [\n        {}\n    ]\n}"
+							"body": "{\n    \"id\": \"32b76251-ff3b-4d59-aa41-d569f2c28447\",\n    \"brand\": \"fiat\",\n    \"model\": \"uno\",\n    \"year\": 2022,\n    \"seller\": [\n        {\n            \"id\": \"cffb273c-38f2-4c49-b961-bed8f2d16dfe\",\n            \"name\": \"Pepe\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Patch => Assign Car a cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"carId\": \"7e113287-6988-4c3d-8715-7eb9a8cb60fa\",\n    \"clientId\": \"ddada9da-486c-4610-a950-97189d1d88ab\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/automovil/assign",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil",
+								"assign"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Patch => Assign Car a cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"carId\": \"fe3fa73c-6d2e-4b3b-bc2d-208c60993f6a\",\n    \"clientId\": \"17178bb8-8f03-4ec6-8482-9acedd0135c0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/automovil/assign",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil",
+										"assign"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "237"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ed-tViFvA7s4wse+INivZgKqPii9/I\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Mar 2023 18:32:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"fe3fa73c-6d2e-4b3b-bc2d-208c60993f6a\",\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"year\": 2022,\n    \"seller\": [\n        {\n            \"id\": \"4ba264fc-1137-4596-b61a-8fe91916946a\",\n            \"name\": \"Pepe\"\n        }\n    ],\n    \"client\": [\n        {\n            \"id\": \"17178bb8-8f03-4ec6-8482-9acedd0135c0\",\n            \"name\": \"Ela Dron\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Patch => Unassign car ",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/automovil/7e113287-6988-4c3d-8715-7eb9a8cb60fa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil",
+								"7e113287-6988-4c3d-8715-7eb9a8cb60fa"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Patch => Unassign car ",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/automovil/fe3fa73c-6d2e-4b3b-bc2d-208c60993f6a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil",
+										"fe3fa73c-6d2e-4b3b-bc2d-208c60993f6a"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "178"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b2-UgptlOjX5jKTSy1g0tg99wFEIhg\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Mar 2023 18:33:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"fe3fa73c-6d2e-4b3b-bc2d-208c60993f6a\",\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"year\": 2022,\n    \"seller\": [\n        {\n            \"id\": \"4ba264fc-1137-4596-b61a-8fe91916946a\",\n            \"name\": \"Pepe\"\n        }\n    ],\n    \"client\": [\n        null\n    ]\n}"
 						}
 					]
 				}
@@ -606,7 +782,7 @@
 					},
 					"response": [
 						{
-							"name": "Get => Cliente",
+							"name": "Get => Clientes",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -636,15 +812,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "2"
+									"value": "311"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+									"value": "W/\"137-XtfsbM3O74RFD6igOLPjqBkcTI0\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 16:49:04 GMT"
+									"value": "Mon, 13 Mar 2023 18:16:14 GMT"
 								},
 								{
 									"key": "Connection",
@@ -656,7 +832,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[]"
+							"body": "[\n    {\n        \"name\": \"juan\",\n        \"id\": \"46a1566a-fb96-417b-9c39-a6e5bbfca78d\",\n        \"bought_cars\": [\n            {\n                \"id\": \"f61b251d-fe12-4c34-84ed-7cec93c27dc4\",\n                \"brand\": \"string\",\n                \"model\": \"string\",\n                \"year\": 2022,\n                \"seller\": [\n                    {\n                        \"id\": \"23e121bd-c04d-487c-8a82-71aba3793d95\",\n                        \"name\": \"Pepe\"\n                    }\n                ],\n                \"client\": [\n                    {\n                        \"id\": \"46a1566a-fb96-417b-9c39-a6e5bbfca78d\",\n                        \"name\": \"juan\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
 						}
 					]
 				},
@@ -685,7 +861,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/cliente/b3b11ee2-8824-4915-a8b1-64e59ec6899a",
+									"raw": "http://localhost:3000/cliente/17178bb8-8f03-4ec6-8482-9acedd0135c0",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -693,7 +869,7 @@
 									"port": "3000",
 									"path": [
 										"cliente",
-										"b3b11ee2-8824-4915-a8b1-64e59ec6899a"
+										"17178bb8-8f03-4ec6-8482-9acedd0135c0"
 									]
 								}
 							},
@@ -711,15 +887,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "209"
+									"value": "81"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"d1-9rgDvG8U+fupnhClLovgODwNW/g\""
+									"value": "W/\"51-JJ2dIMHqOCNm06xswIGfZBrGxMs\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 16:57:38 GMT"
+									"value": "Mon, 13 Mar 2023 18:34:30 GMT"
 								},
 								{
 									"key": "Connection",
@@ -731,7 +907,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"b3b11ee2-8824-4915-a8b1-64e59ec6899a\",\n    \"name\": \"Elcho Rizo\",\n    \"bought_cars\": [\n        {\n            \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ]\n        }\n    ]\n}"
+							"body": "{\n    \"id\": \"17178bb8-8f03-4ec6-8482-9acedd0135c0\",\n    \"name\": \"San Tiago\",\n    \"bought_cars\": []\n}"
 						}
 					]
 				},
@@ -802,15 +978,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "63"
+									"value": "80"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"3f-DbS/YN8shKF5BELVM9afPSXn0oc\""
+									"value": "W/\"50-Mi8aknVeu2hyxVmlMLhnSbO4J+g\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 16:51:00 GMT"
+									"value": "Mon, 13 Mar 2023 18:31:50 GMT"
 								},
 								{
 									"key": "Connection",
@@ -822,98 +998,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"name\": \"Ela Dron\",\n    \"id\": \"653dc1aa-1785-486a-b7e7-695cfdac52c6\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Post => cliente, con compras",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"Elcho Rizo\",\n    \"bought_cars\": [{\n        \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"year\": 2022,\n        \"seller\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"Pepe\"\n            }\n        ]\n    }]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/cliente",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"cliente"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Post => cliente, con compras",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\": \"Elcho Rizo\",\n    \"bought_cars\": [{\n        \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"year\": 2022,\n        \"seller\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"Pepe\"\n            }\n        ]\n    }]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/cliente",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"cliente"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "209"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"d1-9rgDvG8U+fupnhClLovgODwNW/g\""
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 12 Mar 2023 16:55:37 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"b3b11ee2-8824-4915-a8b1-64e59ec6899a\",\n    \"name\": \"Elcho Rizo\",\n    \"bought_cars\": [\n        {\n            \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ]\n        }\n    ]\n}"
+							"body": "{\n    \"id\": \"17178bb8-8f03-4ec6-8482-9acedd0135c0\",\n    \"name\": \"Ela Dron\",\n    \"bought_cars\": []\n}"
 						}
 					]
 				},
@@ -960,7 +1045,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/cliente/b3b11ee2-8824-4915-a8b1-64e59ec6899a",
+									"raw": "http://localhost:3000/cliente/17178bb8-8f03-4ec6-8482-9acedd0135c0",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -968,7 +1053,7 @@
 									"port": "3000",
 									"path": [
 										"cliente",
-										"b3b11ee2-8824-4915-a8b1-64e59ec6899a"
+										"17178bb8-8f03-4ec6-8482-9acedd0135c0"
 									]
 								}
 							},
@@ -986,15 +1071,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "208"
+									"value": "81"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"d0-tZFuCIAvWrMtEMK2Rxhwn98YiM4\""
+									"value": "W/\"51-JJ2dIMHqOCNm06xswIGfZBrGxMs\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 16:59:10 GMT"
+									"value": "Mon, 13 Mar 2023 18:34:17 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1006,7 +1091,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"b3b11ee2-8824-4915-a8b1-64e59ec6899a\",\n    \"name\": \"San Tiago\",\n    \"bought_cars\": [\n        {\n            \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ]\n        }\n    ]\n}"
+							"body": "{\n    \"id\": \"17178bb8-8f03-4ec6-8482-9acedd0135c0\",\n    \"name\": \"San Tiago\",\n    \"bought_cars\": []\n}"
 						}
 					]
 				},
@@ -1035,7 +1120,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/cliente/b3b11ee2-8824-4915-a8b1-64e59ec6899a",
+									"raw": "http://localhost:3000/cliente/7bb83d06-a706-4427-9924-a63d091155ff",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1043,7 +1128,7 @@
 									"port": "3000",
 									"path": [
 										"cliente",
-										"b3b11ee2-8824-4915-a8b1-64e59ec6899a"
+										"7bb83d06-a706-4427-9924-a63d091155ff"
 									]
 								}
 							},
@@ -1061,15 +1146,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "208"
+									"value": "80"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"d0-tZFuCIAvWrMtEMK2Rxhwn98YiM4\""
+									"value": "W/\"50-QmeB1LWEsgNuAUSO0SO/xueEgVM\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 16:59:59 GMT"
+									"value": "Mon, 13 Mar 2023 18:35:22 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1081,7 +1166,193 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"b3b11ee2-8824-4915-a8b1-64e59ec6899a\",\n    \"name\": \"San Tiago\",\n    \"bought_cars\": [\n        {\n            \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ]\n        }\n    ]\n}"
+							"body": "{\n    \"id\": \"7bb83d06-a706-4427-9924-a63d091155ff\",\n    \"name\": \"Ela Dron\",\n    \"bought_cars\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Post => assign car al cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"carId\": \"a3bace5d-ccf8-473a-bc08-02816794eadf\",\n    \"clientId\": \"e00b2191-2006-42a8-bdd6-1416db572fca\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cliente/assign",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente",
+								"assign"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => assign car al cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"carId\": \"fe3fa73c-6d2e-4b3b-bc2d-208c60993f6a\",\n    \"clientId\": \"27bbe5f0-fabb-44cd-a994-be794450ccd6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/cliente/assign",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente",
+										"assign"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f-TlADlljYsvZKJNMpO/nxHeYHzv0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Mar 2023 18:36:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"27bbe5f0-fabb-44cd-a994-be794450ccd6\",\n    \"name\": \"Ela Dron\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Post => unassign car de cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"carId\": \"fe3fa73c-6d2e-4b3b-bc2d-208c60993f6a\",\n    \"clientId\": \"27bbe5f0-fabb-44cd-a994-be794450ccd6\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cliente/27bbe5f0-fabb-44cd-a994-be794450ccd6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente",
+								"27bbe5f0-fabb-44cd-a994-be794450ccd6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => unassign car de cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"carId\": \"f2fd301a-132a-4b71-9036-4b08ae6fa6ef\",\n    \"clientId\": \"50f2f664-fb83-41a2-97f9-90fc11e18f05\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/cliente/f2fd301a-132a-4b71-9036-4b08ae6fa6ef",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente",
+										"f2fd301a-132a-4b71-9036-4b08ae6fa6ef"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "178"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b2-nU082Ee/qbjUdOnQNhuRUZ+krW4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Mar 2023 18:40:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f2fd301a-132a-4b71-9036-4b08ae6fa6ef\",\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"year\": 2022,\n    \"seller\": [\n        {\n            \"id\": \"0673f836-8e22-44d5-8b52-88edd8026967\",\n            \"name\": \"Pepe\"\n        }\n    ],\n    \"client\": [\n        null\n    ]\n}"
 						}
 					]
 				}
@@ -1139,15 +1410,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "2"
+									"value": "254"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+									"value": "W/\"fe-IlTpRv0Q84uH8U2obNm92HjYIMU\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 17:02:23 GMT"
+									"value": "Mon, 13 Mar 2023 18:16:51 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1159,7 +1430,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[]"
+							"body": "[\n    {\n        \"name\": \"Pepe\",\n        \"id\": \"23e121bd-c04d-487c-8a82-71aba3793d95\",\n        \"sold_cars\": [\n            {\n                \"id\": \"f61b251d-fe12-4c34-84ed-7cec93c27dc4\",\n                \"brand\": \"string\",\n                \"model\": \"string\",\n                \"year\": 2022,\n                \"seller\": [\n                    null\n                ],\n                \"client\": [\n                    {\n                        \"id\": \"46a1566a-fb96-417b-9c39-a6e5bbfca78d\",\n                        \"name\": \"juan\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
 						}
 					]
 				},
@@ -1188,7 +1459,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/vendedor/9de4765d-0c9f-4e32-a928-1ff8f25884a8",
+									"raw": "http://localhost:3000/vendedor/2f6ed11e-bd4e-4af9-a103-46c977be35fe",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1196,7 +1467,7 @@
 									"port": "3000",
 									"path": [
 										"vendedor",
-										"9de4765d-0c9f-4e32-a928-1ff8f25884a8"
+										"2f6ed11e-bd4e-4af9-a103-46c977be35fe"
 									]
 								}
 							},
@@ -1214,15 +1485,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "404"
+									"value": "252"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"194-XxR+8k3RUWjWdHTRNjWqzyFU5/A\""
+									"value": "W/\"fc-XCU9mKIE9IbB6hMnquKexj+vIKs\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 17:12:48 GMT"
+									"value": "Mon, 13 Mar 2023 18:41:43 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1234,7 +1505,84 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"9de4765d-0c9f-4e32-a928-1ff8f25884a8\",\n    \"name\": \"Tero Be\",\n    \"sold_cars\": [\n        {\n            \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ],\n            \"client\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"juan\"\n                }\n            ]\n        },\n        {\n            \"id\": \"8bfc63bf-ac9b-4097-914d-9ff1178d1d19\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ],\n            \"client\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"juan\"\n                }\n            ]\n        }\n    ]\n}"
+							"body": "{\n    \"name\": \"Pepe\",\n    \"id\": \"2f6ed11e-bd4e-4af9-a103-46c977be35fe\",\n    \"sold_cars\": [\n        {\n            \"id\": \"7e0eed20-6134-41b5-900d-a884ed4d6e97\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                null\n            ],\n            \"client\": [\n                {\n                    \"id\": \"d1c705c3-86ab-4e9b-8288-9dc0c4f0d4c5\",\n                    \"name\": \"juan\"\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get => cars vendidos por id (vendedor)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vendedor/sold-cars/17a82833-90bd-441d-93fc-b034a1057a6d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor",
+								"sold-cars",
+								"17a82833-90bd-441d-93fc-b034a1057a6d"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => cars vendidos por id (vendedor)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/vendedor/sold-cars/2f6ed11e-bd4e-4af9-a103-46c977be35fe",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor",
+										"sold-cars",
+										"2f6ed11e-bd4e-4af9-a103-46c977be35fe"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-GUgquSL3FvyjB6+cGUxiwzUTqA4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Mar 2023 18:41:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"7e0eed20-6134-41b5-900d-a884ed4d6e97\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"year\": 2022,\n        \"client\": [\n            {\n                \"id\": \"d1c705c3-86ab-4e9b-8288-9dc0c4f0d4c5\",\n                \"name\": \"juan\"\n            }\n        ]\n    }\n]"
 						}
 					]
 				},
@@ -1245,7 +1593,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Tero Be\",\n    \"sold_cars\": [\n        {\n            \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ],\n            \"client\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"juan\"\n                }\n            ]\n        },\n        {\n        \"id\": \"8bfc63bf-ac9b-4097-914d-9ff1178d1d19\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"year\": 2022,\n        \"seller\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"Pepe\"\n            }\n        ],\n        \"client\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"juan\"\n            }\n        ]\n    }\n    ]\n}",
+							"raw": "{\n    \"name\": \"Tero Be\"\n    \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1272,7 +1620,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Tero Be\",\n    \"sold_cars\": [\n        {\n            \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ],\n            \"client\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"juan\"\n                }\n            ]\n        },\n        {\n        \"id\": \"8bfc63bf-ac9b-4097-914d-9ff1178d1d19\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"year\": 2022,\n        \"seller\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"Pepe\"\n            }\n        ],\n        \"client\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"juan\"\n            }\n        ]\n    }\n    ]\n}",
+									"raw": "{\n    \"name\": \"Tero Be\"\n    \n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1305,15 +1653,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "404"
+									"value": "77"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"194-LZaYLau9SdGuKz7t5NBfiFNCJ/0\""
+									"value": "W/\"4d-yAApsYkc3U8R9pf64y+VqDGv1FE\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 17:07:23 GMT"
+									"value": "Mon, 13 Mar 2023 18:42:39 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1325,7 +1673,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"189cfa9f-a9b7-4882-8109-751ff646647b\",\n    \"name\": \"Tero Be\",\n    \"sold_cars\": [\n        {\n            \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ],\n            \"client\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"juan\"\n                }\n            ]\n        },\n        {\n            \"id\": \"8bfc63bf-ac9b-4097-914d-9ff1178d1d19\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ],\n            \"client\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"juan\"\n                }\n            ]\n        }\n    ]\n}"
+							"body": "{\n    \"id\": \"46be508b-6dd3-4a1c-83e3-b2edaa585157\",\n    \"name\": \"Tero Be\",\n    \"sold_cars\": []\n}"
 						}
 					]
 				},
@@ -1364,7 +1712,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Joaquin\"\n}",
+									"raw": "{\n    \"name\": \"Georgina\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1372,7 +1720,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/vendedor/9de4765d-0c9f-4e32-a928-1ff8f25884a8",
+									"raw": "http://localhost:3000/vendedor/2f6ed11e-bd4e-4af9-a103-46c977be35fe",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1380,7 +1728,7 @@
 									"port": "3000",
 									"path": [
 										"vendedor",
-										"9de4765d-0c9f-4e32-a928-1ff8f25884a8"
+										"2f6ed11e-bd4e-4af9-a103-46c977be35fe"
 									]
 								}
 							},
@@ -1398,15 +1746,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "404"
+									"value": "256"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"194-ZmFWHzExPQTZJVvmzgh1wJine28\""
+									"value": "W/\"100-CqesVF86rhiwatXM44zrK17bmqY\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 17:14:01 GMT"
+									"value": "Mon, 13 Mar 2023 18:43:31 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1418,7 +1766,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"9de4765d-0c9f-4e32-a928-1ff8f25884a8\",\n    \"name\": \"Joaquin\",\n    \"sold_cars\": [\n        {\n            \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ],\n            \"client\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"juan\"\n                }\n            ]\n        },\n        {\n            \"id\": \"8bfc63bf-ac9b-4097-914d-9ff1178d1d19\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ],\n            \"client\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"juan\"\n                }\n            ]\n        }\n    ]\n}"
+							"body": "{\n    \"name\": \"Georgina\",\n    \"id\": \"2f6ed11e-bd4e-4af9-a103-46c977be35fe\",\n    \"sold_cars\": [\n        {\n            \"id\": \"7e0eed20-6134-41b5-900d-a884ed4d6e97\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                null\n            ],\n            \"client\": [\n                {\n                    \"id\": \"d1c705c3-86ab-4e9b-8288-9dc0c4f0d4c5\",\n                    \"name\": \"juan\"\n                }\n            ]\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -1447,7 +1795,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/vendedor/9de4765d-0c9f-4e32-a928-1ff8f25884a8",
+									"raw": "http://localhost:3000/vendedor/2f6ed11e-bd4e-4af9-a103-46c977be35fe",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1455,7 +1803,7 @@
 									"port": "3000",
 									"path": [
 										"vendedor",
-										"9de4765d-0c9f-4e32-a928-1ff8f25884a8"
+										"2f6ed11e-bd4e-4af9-a103-46c977be35fe"
 									]
 								}
 							},
@@ -1473,15 +1821,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "404"
+									"value": "252"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"194-ZmFWHzExPQTZJVvmzgh1wJine28\""
+									"value": "W/\"fc-XCU9mKIE9IbB6hMnquKexj+vIKs\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 12 Mar 2023 17:15:07 GMT"
+									"value": "Mon, 13 Mar 2023 18:43:49 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1493,7 +1841,91 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"9de4765d-0c9f-4e32-a928-1ff8f25884a8\",\n    \"name\": \"Joaquin\",\n    \"sold_cars\": [\n        {\n            \"id\": \"5ebe0dce-c0c2-4fc1-88fe-323e05cf25e7\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ],\n            \"client\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"juan\"\n                }\n            ]\n        },\n        {\n            \"id\": \"8bfc63bf-ac9b-4097-914d-9ff1178d1d19\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"Pepe\"\n                }\n            ],\n            \"client\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"juan\"\n                }\n            ]\n        }\n    ]\n}"
+							"body": "{\n    \"name\": \"Pepe\",\n    \"id\": \"2f6ed11e-bd4e-4af9-a103-46c977be35fe\",\n    \"sold_cars\": [\n        {\n            \"id\": \"7e0eed20-6134-41b5-900d-a884ed4d6e97\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                null\n            ],\n            \"client\": [\n                {\n                    \"id\": \"d1c705c3-86ab-4e9b-8288-9dc0c4f0d4c5\",\n                    \"name\": \"juan\"\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Post => añadir auto vendido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vendedor/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => añadir auto vendido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"carId\": \"21b2b1d2-5727-4fa6-9e69-0f7f4847d27d\",\n    \"clientId\": \"e5f1bf8a-6bbb-4d23-8c7a-86df6328509b\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/vendedor/ed368860-5815-4e6c-a1c7-7e97adc5d41c",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor",
+										"ed368860-5815-4e6c-a1c7-7e97adc5d41c"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "360"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"168-P/8RoBc1sc8mhIpKdYDlcFFBH4M\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Mar 2023 19:39:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Pepe\",\n    \"id\": \"ed368860-5815-4e6c-a1c7-7e97adc5d41c\",\n    \"sold_cars\": [\n        {\n            \"id\": \"21b2b1d2-5727-4fa6-9e69-0f7f4847d27d\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                null\n            ]\n        },\n        {\n            \"id\": \"21b2b1d2-5727-4fa6-9e69-0f7f4847d27d\",\n            \"brand\": \"string\",\n            \"model\": \"string\",\n            \"year\": 2022,\n            \"seller\": [\n                {\n                    \"id\": \"ed368860-5815-4e6c-a1c7-7e97adc5d41c\",\n                    \"name\": \"Pepe\"\n                }\n            ],\n            \"client\": [\n                null\n            ]\n        }\n    ]\n}"
 						}
 					]
 				}
