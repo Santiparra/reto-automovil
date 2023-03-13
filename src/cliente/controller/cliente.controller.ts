@@ -44,15 +44,19 @@ export class ClienteController {
   }
 
   @UsePipes(new ValidationPipe({ whitelist: true }))
-  @Patch("/assign")
+  @Post("/assign")
   assign(
     @Body() assignInfo: SellCarInfo ) {
     return this.clienteService.assignCarToClient(assignInfo);
   }
 
-  @Patch(":uuid")
-  unassign( @Param("uuid", ParseUUIDPipe) uuid: string ) {
-    return this.clienteService.unassignCarToClient(uuid);
+  @UsePipes(new ValidationPipe({ whitelist: true }))
+  @Post(":uuid")
+  unassign( 
+    @Param("uuid", ParseUUIDPipe) uuid: string,
+    @Body() assignInfo: SellCarInfo
+    ) {
+    return this.clienteService.unassignCarToClient(uuid, assignInfo.carId);
   }
 
 }

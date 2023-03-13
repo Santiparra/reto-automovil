@@ -1,5 +1,4 @@
-import { IsArray, IsNotEmpty, IsString } from "class-validator";
-import { Automovil } from "src/automovil/entities/automovil.entity";
+import { IsNotEmpty, IsString } from "class-validator";
 
 export class CreateVendedorDto {
     
@@ -7,7 +6,4 @@ export class CreateVendedorDto {
     @IsNotEmpty()
     name: string;
     
-    @IsArray()
-    @IsNotEmpty()
-    sold_cars: Automovil[];
 }

@@ -38,7 +38,7 @@ export class VendedorController {
     return this.vendedorService.deleteSeller(uuid);
   }
 
-  @Get(":uuid")
+  @Get("sold-cars/:uuid")
   soldCars(@Param("uuid", ParseUUIDPipe) uuid: string) {
     return this.vendedorService.getSoldCarsBySellerId(uuid)
   }

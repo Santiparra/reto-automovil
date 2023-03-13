@@ -26,26 +26,27 @@ export class AutomovilService {
     Es evidente que en vez de crear entidades podria tirar error simplemente  */
 
     const car = this.addId(createAutomovilDto);
-
+   
     //nuevamente verificamos si el cliente existe y si no lo validamos y creamos
     if(car.client) {
       const clientFound = this.clienteService.getClientById(car.client[0].id); 
       if ( !clientFound && this.clienteService.validateClient(car.client[0].name) === true) {
         const newClient = this.clienteService.handleNewClient(car);
         car.client[0].id = newClient.id;
-      }
+      }      
     } 
     
     //revisa si el seller esta bien y existe. Si no existe lo creo en el otro modulo
-    const sellerFound = this.vendedorService.getSellerById(car.seller[0].id);
-    falta esta pieza de logica
-    //if (sellerFound) this.vendedorService.addSoldCar(sellerFound.id)
+    const sellerFound = this.vendedorService.getSellerById(car.seller[0].id);     
     if ( !sellerFound && this.vendedorService.validateSeller(car.seller[0].name) === true) {
        const newSeller = this.vendedorService.handleNewSeller(car);
        car.seller[0].id = newSeller.id;
     };    
-    
-    this.cars.push(car)
+    this.cars.push(car);    
+    if (sellerFound && car.client) {      
+      const sellInfo: SellCarInfo = { carId: car.id, clientId: car.client[0].id };
+      this.vendedorService.addSoldCar(sellerFound.id, sellInfo)
+    }
     return car
   }
 
@@ -58,7 +59,7 @@ export class AutomovilService {
   }
 
   getCarsOnSale(): Automovil[] {
-    return this.cars.filter(car => !car.client);
+    return this.cars.filter(car => !car.client || car.client[0] === null);
   }
 
   updateCar(id: string, updateAutomovilDto: UpdateAutomovilDto): Automovil {
@@ -86,6 +87,7 @@ export class AutomovilService {
     this.replaceCar(car);
 
     this.clienteService.assignCarToClient(assignInfo);
+    this.vendedorService.addSoldCar(car.seller[0].id, assignInfo);
     return car
   }
   
@@ -97,9 +99,9 @@ export class AutomovilService {
   unassignCarFromClient(carId: string): Automovil {
     const carToSwap = this.getCarById(carId);
     if (!carToSwap) throw new HttpException("el auto no existe", HttpStatus.NOT_FOUND)
-    this.clienteService.unassignCarToClient(carToSwap.client[0].id);
+    this.clienteService.unassignCarToClient(carToSwap.client[0].id, carId);
     this.vendedorService.unassignCarFromSeller(carToSwap);
-    carToSwap.client = null;
+    carToSwap.client = [null];
     this.replaceCar(carToSwap);
     return carToSwap
     }

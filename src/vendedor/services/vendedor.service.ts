@@ -24,10 +24,7 @@ export class VendedorService {
 
   createSeller(createVendedorDto: CreateVendedorDto): Vendedor {
     const newSeller = this.addId(createVendedorDto);
-    const carExist = this.automovilService.getCarById(newSeller.sold_cars[0].id);
-    if (!carExist) {
-      
-    }
+    newSeller.sold_cars = [];
     this.sellers.push(newSeller);
     return newSeller
   }
@@ -66,16 +63,16 @@ export class VendedorService {
     });
     return cleanInfo
   }
-  
-  addSoldCar(uuid: string, info?: SellCarInfo) {
-    const car = this.automovilService.getCarById(info.carId);
-    const buyer = this.clientService.getClientById(info.clientId);
+     
+  addSoldCar(uuid: string, info: SellCarInfo): Vendedor {
+    const car = this.automovilService.getCarById(info.carId);    
     const seller = this.getSellerById(uuid);
-
-    const { bought_cars, sold_cars, ...rest } = buyer;
-    car.client.push(rest);
+    car.seller[0].id = uuid;
+    car.seller[0].name = seller.name
+    this.clientService.setSeller(car);
     seller.sold_cars.push(car);
-    this.replaceSeller(seller)
+    this.replaceSeller(seller);
+    return seller
   }
 
   //esta funcion podria ser generica pero prefiero especificar la entidad retorno

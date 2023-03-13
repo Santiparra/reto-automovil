@@ -1,5 +1,5 @@
 import { AutomovilService } from './../../automovil/services/automovil.service';
-import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { CreateClienteDto } from '../dto/create-cliente.dto';
 import { UpdateClienteDto } from '../dto/update-cliente.dto';
 import { v4 as uuidv4 } from 'uuid';
@@ -9,7 +9,7 @@ import { SellCarInfo } from 'src/vendedor/dto/sell-car.dto';
 
 @Injectable()
 export class ClienteService {
-    
+      
   constructor (
     @Inject(forwardRef(() => AutomovilService))
     private automovilService: AutomovilService
@@ -18,10 +18,10 @@ export class ClienteService {
   clients: Cliente[] = [];
  
   createClient(createClienteDto: CreateClienteDto): Cliente {
-    let createdClient = this.addId(createClienteDto);
-   // if (createClienteDto.bought_cars) this.assignCarToClient(createdClient.id, createdClient.bought_cars);
-   this.clients.push(createdClient); 
-   return createdClient
+    const createdClient = this.addId(createClienteDto);
+    createdClient.bought_cars = [];
+    this.clients.push(createdClient); 
+    return createdClient
   }
 
   getAllClients(): Cliente[] {
@@ -59,9 +59,9 @@ export class ClienteService {
     return buyer
   }
   
-  unassignCarToClient(clientID: string): Cliente {
+  unassignCarToClient(clientID: string, carId: string): Cliente {
     const clientToUnassign = this.getClientById(clientID);
-    clientToUnassign.bought_cars.splice(0, clientToUnassign.bought_cars.length);
+    clientToUnassign.bought_cars = clientToUnassign.bought_cars.filter(car => car.id !== carId);
     this.replaceClient(clientToUnassign);
     return clientToUnassign
   }
@@ -103,6 +103,12 @@ export class ClienteService {
   validateClient(name: string): boolean {
     if ( !name || typeof name !== 'string' ) return false;
     if ( name.length > 0 ) return true;
+  }
+
+  setSeller(car: Automovil): void {
+    const client = this.getClientById(car.client[0].id);
+    client.bought_cars = client.bought_cars.filter(cars => cars.id !== car.id)
+    client.bought_cars.push(car)
   }
 
 }
