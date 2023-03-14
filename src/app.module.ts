@@ -1,17 +1,17 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { ClienteModule } from './cliente/cliente.module';
-import { AutomovilModule } from './automovil/automovil.module';
-import { VendedorModule } from './vendedor/vendedor.module';
-import { AutomovilMysqlModule } from './automovil-mysql/automovil-mysql.module';
-import { ClienteMysqlModule } from './cliente-mysql/cliente-mysql.module';
-import { VendedorMysqlModule } from './vendedor-mysql/vendedor-mysql.module';
+import { AutomovilModule } from './App-Local-Version-Buena/automovil/automovil.module';
+import { AutomovilMysqlModule } from './App-Mysql/automovil-mysql/automovil-mysql.module';
 import { LoggerModule } from 'nestjs-pino';
 import { loggerConfig } from './utils/logger-conf';
 import { CorrelationIdMiddleware } from './middlewares/correlation-id.middleware';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SellerMysql } from './entities/seller.entity';
-import { ClientMysql } from './entities/client.entity';
-import { CarMysql } from './entities/car.entity';
+import { VendedorModule } from './App-Local-Version-Buena/vendedor/vendedor.module';
+import { ClienteMysqlModule } from './App-Mysql/cliente-mysql/cliente-mysql.module';
+import { CarMysql } from './App-Mysql/entities/car.entity';
+import { ClientMysql } from './App-Mysql/entities/client.entity';
+import { SellerMysql } from './App-Mysql/entities/seller.entity';
+import { VendedorMysqlModule } from './App-Mysql/vendedor-mysql/vendedor-mysql.module';
+import { ClienteModule } from './App-Local-Version-Buena/cliente/cliente.module';
 
 @Module({
   imports: [
