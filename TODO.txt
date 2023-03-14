@@ -10,13 +10,21 @@ Version Mysql :
     - Definir entidades
     - Crear Tablas
     - Registrar entidades para tokens de Repos
+    - Scopear correctamente las features
     - Definir Rutas
     - Dar logica a los Metodos
     - Excepciones
     - Nueva coleccion Postman
+    - Generar el .env
+    
+Version Local Basica:
+
+    - Generar recursos
+    - Metodos 
 
 Version Mongo :
 
+    - Generar recursos
     - Definir Esquemas
     - Importacion mongoose
     - Definir Rutas
@@ -24,3 +32,8 @@ Version Mongo :
     - Excepciones
     - Nueva coleccion Postman    
 
+Global: 
+
+    - Custom local Repos
+    - Lazy Load
+    - Environment     
