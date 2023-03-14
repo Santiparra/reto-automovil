@@ -31,9 +31,7 @@ import { CarMysql } from './entities/car.entity';
       database: "nestjs_automobiliaria",
       entities: [SellerMysql, ClientMysql, CarMysql],
       synchronize: true,
-    }), 
-    //porfa move esto a scope modulo correspondiente
-    TypeOrmModule.forFeature([SellerMysql, CarMysql, ClientMysql])
+    }),     
   ],
   controllers: [],
   providers: [],

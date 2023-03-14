@@ -1,26 +1,43 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { SellerMysql } from 'src/entities/seller.entity';
+import { SellCarInfo } from 'src/vendedor/dto/sell-car.dto';
+import { Repository } from 'typeorm';
 import { CreateVendedorMysqlDto } from '../dto/create-vendedor-mysql.dto';
-import { UpdateVendedorMysqlDto } from '../dto/update-vendedor-mysql.dto';
 
 @Injectable()
 export class VendedorMysqlService {
-  create(createVendedorMysqlDto: CreateVendedorMysqlDto) {
-    return 'This action adds a new vendedorMysql';
+
+  constructor( 
+    @InjectRepository(SellerMysql) private usersRepo: Repository<SellerMysql>,
+    ) {}
+
+  createVendedor(createVendedorMysqlDto: CreateVendedorMysqlDto) {
+    throw new Error('Method not implemented.');
   }
 
-  findAll() {
-    return `This action returns all vendedorMysql`;
+  getAllSellers() {
+    throw new Error('Method not implemented.');
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} vendedorMysql`;
+  getSellerById(id: string) {
+    throw new Error('Method not implemented.');
   }
 
-  update(id: number, updateVendedorMysqlDto: UpdateVendedorMysqlDto) {
-    return `This action updates a #${id} vendedorMysql`;
+  updateSeller(id: string, updateVendedorMysqlDto: CreateVendedorMysqlDto) {
+    throw new Error('Method not implemented.');
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} vendedorMysql`;
+  deleteSeller(id: string) {
+    throw new Error('Method not implemented.');
   }
+
+  getSoldCarsBySellerId(id: string) {
+    throw new Error('Method not implemented.');
+  }
+  
+  addSoldCar(id: string, sellingData: SellCarInfo) {
+    throw new Error('Method not implemented.');
+  } 
+ 
 }

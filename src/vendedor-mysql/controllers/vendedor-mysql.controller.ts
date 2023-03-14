@@ -1,6 +1,6 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Logger } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Logger, ParseUUIDPipe } from '@nestjs/common';
+import { SellCarInfo } from 'src/vendedor/dto/sell-car.dto';
 import { CreateVendedorMysqlDto } from '../dto/create-vendedor-mysql.dto';
-import { UpdateVendedorMysqlDto } from '../dto/update-vendedor-mysql.dto';
 import { VendedorMysqlService } from '../services/vendedor-mysql.service';
 
 @Controller('vendedor-mysql')
@@ -12,28 +12,43 @@ export class VendedorMysqlController {
 
   @Post()
   create(@Body() createVendedorMysqlDto: CreateVendedorMysqlDto) {
-    this.logger.log("Creando Automovil");
-    return this.vendedorMysqlService.create(createVendedorMysqlDto);
+    return this.vendedorMysqlService.createVendedor(createVendedorMysqlDto);
   }
 
   @Get()
   findAll() {
-    this.logger.log("Buscando Automoviles");
-    return this.vendedorMysqlService.findAll();
+    return this.vendedorMysqlService.getAllSellers();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.vendedorMysqlService.findOne(+id);
+  findOne(@Param('id', ParseUUIDPipe) id: string) {
+    return this.vendedorMysqlService.getSellerById(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateVendedorMysqlDto: UpdateVendedorMysqlDto) {
-    return this.vendedorMysqlService.update(+id, updateVendedorMysqlDto);
+  update(
+    @Param('id', ParseUUIDPipe) id: string, 
+    @Body() updateVendedorMysqlDto: CreateVendedorMysqlDto 
+    ) {
+    return this.vendedorMysqlService.updateSeller(id, updateVendedorMysqlDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.vendedorMysqlService.remove(+id);
+  remove(@Param('id', ParseUUIDPipe) id: string) {
+    return this.vendedorMysqlService.deleteSeller(id);
   }
+
+  @Get("sold-cars/:id")
+  soldCars(@Param("id", ParseUUIDPipe) id: string) {
+    return this.vendedorMysqlService.getSoldCarsBySellerId(id)
+  }
+
+  @Post(":id")
+  sellCar(
+    @Param("id", ParseUUIDPipe) id: string, 
+    @Body() sellingData: SellCarInfo
+    ) {
+    return this.vendedorMysqlService.addSoldCar(id, sellingData);
+  }
+
 }

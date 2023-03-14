@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Logger } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Logger, ParseUUIDPipe } from '@nestjs/common';
+import { SellCarInfo } from 'src/vendedor/dto/sell-car.dto';
 import { CreateAutomovilMysqlDto } from '../dto/create-automovil-mysql.dto';
 import { UpdateAutomovilMysqlDto } from '../dto/update-automovil-mysql.dto';
 import { AutomovilMysqlService } from '../services/automovil-mysql.service';
@@ -12,26 +13,38 @@ export class AutomovilMysqlController {
 
   @Post()
   create(@Body() createAutomovilMysqlDto: CreateAutomovilMysqlDto) {
-    return this.automovilMysqlService.create(createAutomovilMysqlDto);
+    return this.automovilMysqlService.createCar(createAutomovilMysqlDto);
   }
 
   @Get()
   findAll() {
-    return this.automovilMysqlService.findAll();
+    return this.automovilMysqlService.getAllCars();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.automovilMysqlService.findOne(+id);
+  findOne(@Param('id', ParseUUIDPipe) id: string) {
+    return this.automovilMysqlService.getCarById(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAutomovilMysqlDto: UpdateAutomovilMysqlDto) {
-    return this.automovilMysqlService.update(+id, updateAutomovilMysqlDto);
+  update(@Param('id', ParseUUIDPipe) id: string, @Body() updateAutomovilMysqlDto: UpdateAutomovilMysqlDto) {
+    return this.automovilMysqlService.updateCar(id, updateAutomovilMysqlDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.automovilMysqlService.remove(+id);
+  remove(@Param('id', ParseUUIDPipe) id: string) {
+    return this.automovilMysqlService.deleteCar(id);
+  }
+
+  @Post('assign')
+  assign( @Body() assignInfo: SellCarInfo) {
+    return this.automovilMysqlService.assignCarToClient(assignInfo);
+  }
+
+  @Post(':id')
+  unassign(
+    @Param('id', ParseUUIDPipe) id: string,
+    ) {
+    return this.automovilMysqlService.unassignCarFromClient(id);
   }
 }

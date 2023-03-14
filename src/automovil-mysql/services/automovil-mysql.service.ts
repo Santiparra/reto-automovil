@@ -1,27 +1,44 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { CarMysql } from 'src/entities/car.entity';
+import { SellCarInfo } from 'src/vendedor/dto/sell-car.dto';
+import { Repository } from 'typeorm';
 import { CreateAutomovilMysqlDto } from '../dto/create-automovil-mysql.dto';
 import { UpdateAutomovilMysqlDto } from '../dto/update-automovil-mysql.dto';
 
 @Injectable()
 export class AutomovilMysqlService {
-  
-  create(createAutomovilMysqlDto: CreateAutomovilMysqlDto) {
-    return 'This action adds a new automovilMysql';
+
+  constructor( 
+    @InjectRepository(CarMysql) private usersRepo: Repository<CarMysql>,
+    ) {}
+
+  createCar(createAutomovilMysqlDto: CreateAutomovilMysqlDto) {
+    throw new Error('Method not implemented.');
   }
 
-  findAll() {
-    return `This action returns all automovilMysql`;
+  getAllCars() {
+    throw new Error('Method not implemented.');
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} automovilMysql`;
+  getCarById(id: string) {
+    throw new Error('Method not implemented.');
   }
 
-  update(id: number, updateAutomovilMysqlDto: UpdateAutomovilMysqlDto) {
-    return `This action updates a #${id} automovilMysql`;
+  updateCar(id: string, updateAutomovilMysqlDto: UpdateAutomovilMysqlDto) {
+    throw new Error('Method not implemented.');
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} automovilMysql`;
+  deleteCar(id: string) {
+    throw new Error('Method not implemented.');
   }
+
+  assignCarToClient(assignInfo: SellCarInfo) {
+    throw new Error('Method not implemented.');
+  }
+
+  unassignCarFromClient(id: string) {
+    throw new Error('Method not implemented.');
+  }
+    
 }
