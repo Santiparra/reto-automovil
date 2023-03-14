@@ -8,6 +8,7 @@ Version Local:
 Version Mysql :
 
     - Dar logica a los Metodos
+    - Relaciones incluidas en los Querys
     - Excepciones
     - Nueva coleccion Postman
     - Generar el .env
