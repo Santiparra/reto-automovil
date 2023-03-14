@@ -1,0 +1,1307 @@
+{
+	"info": {
+		"_postman_id": "77f4f298-d97e-4918-b14d-56ecfb3880cc",
+		"name": "Automobiliaria Mysql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25929179"
+	},
+	"item": [
+		{
+			"name": "Cars",
+			"item": [
+				{
+					"name": "Get => Todos los autos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/automovil-mysql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil-mysql"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => Todos los autos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/automovil-mysql/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil-mysql",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "305e2b65-be5e-4164-a37b-b367ddba8d14"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "237"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ed-sciR0fEd5dntjHhEEkK2JgIwcdM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:37:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"1d88b2c1-23d4-4925-ab70-782a465f90cf\",\n        \"brand\": \"fiat\",\n        \"model\": \"uno\",\n        \"year\": 2021,\n        \"seller\": null,\n        \"client\": null\n    },\n    {\n        \"id\": \"d5da2ebb-54de-442e-81e0-d3fdf295a002\",\n        \"brand\": \"toyota\",\n        \"model\": \"corolla\",\n        \"year\": 1998,\n        \"seller\": null,\n        \"client\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get => auto por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/automovil-mysql/1d88b2c1-23d4-4925-ab70-782a465f90cf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil-mysql",
+								"1d88b2c1-23d4-4925-ab70-782a465f90cf"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => auto por id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/automovil-mysql/1d88b2c1-23d4-4925-ab70-782a465f90cf",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil-mysql",
+										"1d88b2c1-23d4-4925-ab70-782a465f90cf"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "743a8ba2-ea88-4e79-ab0d-1af6598fb939"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-GlLArivVgxNgbonUVc3TDnNkOWs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:38:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"1d88b2c1-23d4-4925-ab70-782a465f90cf\",\n    \"brand\": \"fiat\",\n    \"model\": \"uno\",\n    \"year\": 2021\n}"
+						}
+					]
+				},
+				{
+					"name": "Post => Crear auto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brand\": \"toyota\",\n    \"model\": \"corolla\",\n    \"year\": 1998\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/automovil-mysql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil-mysql"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => Crear auto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand\": \"toyota\",\n    \"model\": \"corolla\",\n    \"year\": 1998\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/automovil-mysql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil-mysql"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "065b9271-64f2-4800-9c2d-51c4939d4fbf"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "92"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5c-payp6/HsVUxrk+Pt0xQhz09fkG8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:33:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"brand\": \"toyota\",\n    \"model\": \"corolla\",\n    \"year\": 1998,\n    \"id\": \"d5da2ebb-54de-442e-81e0-d3fdf295a002\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Patch => Editar Auto",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"year\": 1995\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/automovil-mysql/1d88b2c1-23d4-4925-ab70-782a465f90cf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil-mysql",
+								"1d88b2c1-23d4-4925-ab70-782a465f90cf"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Patch => Editar Auto",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"year\": 1995\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/automovil-mysql/1d88b2c1-23d4-4925-ab70-782a465f90cf",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil-mysql",
+										"1d88b2c1-23d4-4925-ab70-782a465f90cf"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "173f9736-7f66-4569-b629-16bb4ae56ac5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-mB4ozBrXsqYLqBrN8GcmPSUU2kc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:39:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"1d88b2c1-23d4-4925-ab70-782a465f90cf\",\n    \"brand\": \"fiat\",\n    \"model\": \"uno\",\n    \"year\": 1995\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete => Borrar auto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/automovil-mysql/0129d74a-97f3-41d5-8897-551afaf6b148",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil-mysql",
+								"0129d74a-97f3-41d5-8897-551afaf6b148"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete => Borrar auto",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/automovil-mysql/0129d74a-97f3-41d5-8897-551afaf6b148",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil-mysql",
+										"0129d74a-97f3-41d5-8897-551afaf6b148"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "811588a7-02b6-4642-8125-94cd7289f6e0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17-PVQD/E0HAqMH9FRBYNXdIixTtCA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:36:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"raw\": [],\n    \"affected\": 1\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Clients",
+			"item": [
+				{
+					"name": "Get => Clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cliente-mysql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente-mysql"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => Clientes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/cliente-mysql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente-mysql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "d4baebd8-bf8d-412d-82fd-9061b1a18529"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "262"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"106-wwGI4Ow8334ejEdf5k8zhxvbV1w\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:42:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"020190bb-c303-4768-8a47-a6541628e936\",\n        \"name\": \"Santiago Iparra\",\n        \"bought_cars\": []\n    },\n    {\n        \"id\": \"2558acbd-d9a9-49bb-96b0-b040634c7016\",\n        \"name\": \"Juan Acevedo\",\n        \"bought_cars\": []\n    },\n    {\n        \"id\": \"412da9e9-1b20-40b1-b3b8-e6b9f6f15d8c\",\n        \"name\": \"Georgina Pintos\",\n        \"bought_cars\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get => Cliente por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cliente-mysql/2558acbd-d9a9-49bb-96b0-b040634c7016",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente-mysql",
+								"2558acbd-d9a9-49bb-96b0-b040634c7016"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => Cliente por Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/cliente-mysql/2558acbd-d9a9-49bb-96b0-b040634c7016",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente-mysql",
+										"2558acbd-d9a9-49bb-96b0-b040634c7016"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "69abed17-e31c-4bff-8ec9-ab505a574ce6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-xmyPLC7kl1Ba5y71EVb1dt+609s\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:43:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"2558acbd-d9a9-49bb-96b0-b040634c7016\",\n    \"name\": \"Juan Acevedo\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Post => Crear Cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Santiago Iparra\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cliente-mysql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente-mysql"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => Crear Cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Santiago Iparra\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/cliente-mysql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente-mysql"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "712fe7d9-7979-4b5a-940c-5a9435ce2ac6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-IL4/WOijyRJ7eIcWHRNczG0kAA0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:41:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Santiago Iparra\",\n    \"id\": \"020190bb-c303-4768-8a47-a6541628e936\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Patch => Editar Cliente",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Ignacio Lapaz\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cliente-mysql/2558acbd-d9a9-49bb-96b0-b040634c7016",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente-mysql",
+								"2558acbd-d9a9-49bb-96b0-b040634c7016"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Patch => Editar Cliente",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Ignacio Lapaz\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/cliente-mysql/2558acbd-d9a9-49bb-96b0-b040634c7016",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente-mysql",
+										"2558acbd-d9a9-49bb-96b0-b040634c7016"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "9d079f16-d293-453f-a6e6-b962ffc545a2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-kzcw4ClijSXJxDroLSKoJVcYcm8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:45:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"2558acbd-d9a9-49bb-96b0-b040634c7016\",\n    \"name\": \"Ignacio Lapaz\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete => Borrar Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cliente-mysql/020190bb-c303-4768-8a47-a6541628e936",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente-mysql",
+								"020190bb-c303-4768-8a47-a6541628e936"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete => Borrar Cliente",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/cliente-mysql/020190bb-c303-4768-8a47-a6541628e936",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente-mysql",
+										"020190bb-c303-4768-8a47-a6541628e936"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "65acc3c7-d02f-4de2-a49e-e61017c5169d"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17-PVQD/E0HAqMH9FRBYNXdIixTtCA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:46:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"raw\": [],\n    \"affected\": 1\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Sellers",
+			"item": [
+				{
+					"name": "Get => todos los vendedores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vendedor-mysql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor-mysql"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => todos los vendedores",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/vendedor-mysql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor-mysql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "07bb1a35-3e87-4406-b30a-aea16fe31a31"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "238"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ee-OASYHJGFZmkixZs/I2yLRuTZTGc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:51:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"1f2598c2-c5d3-49cc-b674-d9c4aa24c50a\",\n        \"name\": \"Elro Cho\",\n        \"sold_cars\": []\n    },\n    {\n        \"id\": \"39f2ed1e-0828-4ec6-8ec4-a622a4f06761\",\n        \"name\": \"Ella Dron\",\n        \"sold_cars\": []\n    },\n    {\n        \"id\": \"d07fac56-0fa3-4659-9e90-3333986ce9d7\",\n        \"name\": \"Tero Be\",\n        \"sold_cars\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Post => Crear Vendedor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Ella Dron\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/vendedor-mysql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor-mysql"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => Crear Vendedor",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Ella Dron\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/vendedor-mysql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor-mysql"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "4529c858-5c98-4f31-94e9-d0fae9157438"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "64"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"40-qG4Qw+Egao/p5NFAwB2In7I4uhY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:50:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Ella Dron\",\n    \"id\": \"39f2ed1e-0828-4ec6-8ec4-a622a4f06761\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get => Vendedor Por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vendedor-mysql/1f2598c2-c5d3-49cc-b674-d9c4aa24c50a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor-mysql",
+								"1f2598c2-c5d3-49cc-b674-d9c4aa24c50a"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => Vendedor Por Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/vendedor-mysql/1f2598c2-c5d3-49cc-b674-d9c4aa24c50a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor-mysql",
+										"1f2598c2-c5d3-49cc-b674-d9c4aa24c50a"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "b0d3d963-5965-4d48-817f-7232b68041d4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f-xCXK+aHznTiPtJIjD5+oe7flRg8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:51:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"1f2598c2-c5d3-49cc-b674-d9c4aa24c50a\",\n    \"name\": \"Elro Cho\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Patch => Editar Vendedor",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Otra string\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/vendedor-mysql/0a18eb67-605a-4ac0-a8a4-198ca327354a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor-mysql",
+								"0a18eb67-605a-4ac0-a8a4-198ca327354a"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Patch => Editar Vendedor",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Otra string\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/vendedor-mysql/0a18eb67-605a-4ac0-a8a4-198ca327354a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor-mysql",
+										"0a18eb67-605a-4ac0-a8a4-198ca327354a"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "3230c256-34d4-47f7-a1a1-f54ea8503cd2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-4BTuNTVkhzOWGzVFWfnrhVINFFU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:53:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"0a18eb67-605a-4ac0-a8a4-198ca327354a\",\n    \"name\": \"Otra string\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete => Vendedor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vendedor-mysql/0a18eb67-605a-4ac0-a8a4-198ca327354a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor-mysql",
+								"0a18eb67-605a-4ac0-a8a4-198ca327354a"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete => Vendedor",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/vendedor-mysql/0a18eb67-605a-4ac0-a8a4-198ca327354a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor-mysql",
+										"0a18eb67-605a-4ac0-a8a4-198ca327354a"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "f1ccbb5c-9669-4f48-90ed-93226e36641d"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17-PVQD/E0HAqMH9FRBYNXdIixTtCA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 18:53:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"raw\": [],\n    \"affected\": 1\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
