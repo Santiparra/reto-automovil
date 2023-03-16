@@ -1,14 +1,12 @@
-import { SellCarDto } from './../dto/sell-car.dto';
-import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
+import { ClienteMysqlService } from './../../cliente-mysql/services/cliente-mysql.service';
+import { forwardRef, HttpException, HttpStatus, Inject, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CarMysql } from 'src/App-Mysql/entities/car.entity';
-import { ClientMysql } from 'src/App-Mysql/entities/client.entity';
-import { DeleteResult, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { AssignCarToClient } from '../dto/assign-car.dto';
 import { CreateAutomovilMysqlDto } from '../dto/create-automovil-mysql.dto';
 import { UpdateAutomovilMysqlDto } from '../dto/update-automovil-mysql.dto';
 import { Car } from '../interfaces/car.interface';
-import { SellerMysql } from 'src/App-Mysql/entities/seller.entity';
 
 @Injectable()
 export class AutomovilMysqlService {
@@ -16,11 +14,11 @@ export class AutomovilMysqlService {
   private readonly logger = new Logger(AutomovilMysqlService.name);
 
   constructor( 
-    @InjectRepository(ClientMysql) private clientsRepo: Repository<ClientMysql>,
     @InjectRepository(CarMysql) private carsRepo: Repository<CarMysql>,
-    @InjectRepository(SellerMysql) private sellersRepo: Repository<SellerMysql>
+    @Inject(forwardRef(() => ClienteMysqlService))
+    private clientService: ClienteMysqlService,
     ) {}
-
+    
   createCar(createAutomovilMysqlDto: CreateAutomovilMysqlDto): Promise<Car> {
     const newCar = this.carsRepo.create({
         ...createAutomovilMysqlDto
@@ -44,35 +42,30 @@ export class AutomovilMysqlService {
   }
 
   async updateCar(id: string, updateAutomovilMysqlDto: UpdateAutomovilMysqlDto): Promise<Car> {
-    const carExist = await this.carsRepo.findOne({
-      where: {
-          id
-      }
-    });  
+    const carExist = await this.getCarById(id);
     if (!carExist) throw new HttpException("No existe ningún auto con esta id", HttpStatus.NOT_FOUND);
-    const finalObject = Object.assign(carExist, updateAutomovilMysqlDto);
-    return this.carsRepo.save(finalObject)
+    const newCar = Object.assign(carExist, updateAutomovilMysqlDto);
+    return this.carsRepo.save(newCar)
   }
 
-  async deleteCar(id: string): Promise<DeleteResult> {
+  async deleteCar(id: string): Promise<string> {
     const carExist =  await this.carsRepo.delete({ id });
     if (carExist.affected === 0) throw new HttpException("No hay auto con esta id", HttpStatus.NOT_FOUND)
-    return carExist.raw
+    return "El auto fue borrado con exito"
   }
 
   async assignCarToClient(id: string, assignInfo: AssignCarToClient): Promise<Car> {
     const carFound = await this.getCarById(id);
-    const clientFound = await this.clientsRepo.findOne({
-      where: {
-          id: assignInfo.clientId
-      }
-    });
-     carFound.client = clientFound;
-     return this.carsRepo.save(carFound);     
+    if(!carFound) throw new HttpException("No existe ningún auto con esta id", HttpStatus.NOT_FOUND);
+    const clientFound = await this.clientService.getClientById(assignInfo.clientId);
+    if (!clientFound) throw new HttpException("No hay ningún cliente con esta id", HttpStatus.BAD_REQUEST);
+    carFound.client = clientFound;
+    return this.carsRepo.save(carFound);     
   }
 
   async unassignCarFromClient(id: string): Promise<Car> {
     const carFound = await this.getCarById(id);
+    if(!carFound) throw new HttpException("No existe ningún auto con esta id", HttpStatus.NOT_FOUND);
     carFound.client = null;
     return this.carsRepo.save(carFound)
   }

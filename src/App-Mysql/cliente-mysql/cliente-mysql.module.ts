@@ -10,7 +10,7 @@ import { AutomovilMysqlModule } from '../automovil-mysql/automovil-mysql.module'
     forwardRef(() => AutomovilMysqlModule),
     TypeOrmModule.forFeature([ ClientMysql ]),
   ],
-  exports: [TypeOrmModule],
+  exports: [ClienteMysqlService],
   controllers: [ClienteMysqlController],
   providers: [ClienteMysqlService]
 })

@@ -6,8 +6,6 @@ Version Local:
     
 Version Mysql :
 
-    - Excepciones
-    - Actualiza coleccion Postman
     - Generar el .env
     
 ?Version Local Basica:

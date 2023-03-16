@@ -11,6 +11,5 @@ import { VendedorMysqlService } from './services/vendedor-mysql.service';
     TypeOrmModule.forFeature([ SellerMysql ])],
   controllers: [VendedorMysqlController],
   providers: [VendedorMysqlService],
-  exports: [TypeOrmModule]
 })
 export class VendedorMysqlModule {}

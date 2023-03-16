@@ -1,7 +1,17 @@
 import { AddSaleDto } from './../dto/add-sale.dto';
-import { Controller, Get, Post, Body, Patch, Param, Delete, Logger, ParseUUIDPipe } from '@nestjs/common';
 import { CreateVendedorMysqlDto } from '../dto/create-vendedor-mysql.dto';
 import { VendedorMysqlService } from '../services/vendedor-mysql.service';
+import { 
+  Controller, 
+  Get, 
+  Post, 
+  Body, 
+  Patch, 
+  Param, 
+  Delete, 
+  Logger, 
+  ParseUUIDPipe 
+} from '@nestjs/common';
 
 @Controller('vendedor-mysql')
 export class VendedorMysqlController {
