@@ -11,7 +11,9 @@ import {
   Delete, 
   Logger, 
   ParseUUIDPipe, 
-  Put 
+  Put, 
+  UsePipes,
+  ValidationPipe
 } from '@nestjs/common';
 
 @Controller('cliente-mysql')
@@ -21,6 +23,7 @@ export class ClienteMysqlController {
 
   constructor(private readonly clienteMysqlService: ClienteMysqlService) {}
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Post()
   create(@Body() createClienteMysqlDto: CreateClienteMysqlDto) {
     return this.clienteMysqlService.createClient(createClienteMysqlDto);
@@ -36,6 +39,7 @@ export class ClienteMysqlController {
     return this.clienteMysqlService.getClientById(id);
   }
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Patch(':id')
   update(
     @Param('id', ParseUUIDPipe) id: string, 
@@ -49,6 +53,7 @@ export class ClienteMysqlController {
     return this.clienteMysqlService.deleteClient(id);
   }
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Put("assign/:id")
   assign(
     @Param('id', ParseUUIDPipe) id: string,
@@ -57,6 +62,7 @@ export class ClienteMysqlController {
     return this.clienteMysqlService.assignCarToClient(id, assignInfo);
   }
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Put("unassign/:id")
   unassign( @Param("id", ParseUUIDPipe) id: string,
     @Body() unassignInfo: AssignClientToCar 

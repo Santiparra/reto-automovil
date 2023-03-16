@@ -12,7 +12,9 @@ import {
   Delete, 
   Logger, 
   ParseUUIDPipe, 
-  Put 
+  Put, 
+  UsePipes,
+  ValidationPipe
 } from '@nestjs/common';
 
 @Controller('automovil-mysql')
@@ -22,6 +24,7 @@ export class AutomovilMysqlController {
   
   constructor(private readonly automovilMysqlService: AutomovilMysqlService) {}
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Post()
   create(@Body() createAutomovilMysqlDto: CreateAutomovilMysqlDto) {
     return this.automovilMysqlService.createCar(createAutomovilMysqlDto);
@@ -37,8 +40,12 @@ export class AutomovilMysqlController {
     return this.automovilMysqlService.getCarById(id);
   }
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Patch(':id')
-  update(@Param('id', ParseUUIDPipe) id: string, @Body() updateAutomovilMysqlDto: UpdateAutomovilMysqlDto) {
+  update(
+    @Param('id', ParseUUIDPipe) id: string, 
+    @Body() updateAutomovilMysqlDto: UpdateAutomovilMysqlDto
+    ) {
     return this.automovilMysqlService.updateCar(id, updateAutomovilMysqlDto);
   }
 
@@ -47,6 +54,7 @@ export class AutomovilMysqlController {
     return this.automovilMysqlService.deleteCar(id);
   }
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Put('assign/:id')
   assign( 
     @Param('id', ParseUUIDPipe) id: string,
@@ -56,9 +64,7 @@ export class AutomovilMysqlController {
   }
 
   @Put('unassign/:id')
-  unassign(
-    @Param('id', ParseUUIDPipe) id: string,
-    ) {
+  unassign(@Param('id', ParseUUIDPipe) id: string) {
     return this.automovilMysqlService.unassignCarFromClient(id);
   }
   

@@ -10,7 +10,9 @@ import {
   Param, 
   Delete, 
   Logger, 
-  ParseUUIDPipe 
+  ParseUUIDPipe, 
+  UsePipes,
+  ValidationPipe
 } from '@nestjs/common';
 
 @Controller('vendedor-mysql')
@@ -20,6 +22,7 @@ export class VendedorMysqlController {
 
   constructor(private readonly vendedorMysqlService: VendedorMysqlService) {}
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Post()
   create(@Body() createVendedorMysqlDto: CreateVendedorMysqlDto) {
     return this.vendedorMysqlService.createVendedor(createVendedorMysqlDto);
@@ -35,6 +38,7 @@ export class VendedorMysqlController {
     return this.vendedorMysqlService.getSellerById(id);
   }
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Patch(':id')
   update(
     @Param('id', ParseUUIDPipe) id: string, 
@@ -53,6 +57,7 @@ export class VendedorMysqlController {
     return this.vendedorMysqlService.getSoldCarsBySellerId(id)
   }
 
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   @Post("sale/:id")
   sellCar(
     @Param("id", ParseUUIDPipe) id: string, 

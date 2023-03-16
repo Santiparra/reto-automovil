@@ -18,3 +18,5 @@ Global:
     - Custom local Repos
     - Lazy Load
     - Environment     
+
+HECHO: añadidas pipes
