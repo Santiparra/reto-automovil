@@ -8,7 +8,7 @@ export interface Car {
     brand: string;
     model: string;
     year: number;
-    seller?: Seller;
-    client?: Client; 
+    seller: Seller;
+    client: Client; 
 
 }

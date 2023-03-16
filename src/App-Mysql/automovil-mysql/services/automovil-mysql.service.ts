@@ -1,17 +1,24 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { SellCarDto } from './../dto/sell-car.dto';
+import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { SellCarInfo } from 'src/App-Local-Version-Buena/vendedor/dto/sell-car.dto';
 import { CarMysql } from 'src/App-Mysql/entities/car.entity';
+import { ClientMysql } from 'src/App-Mysql/entities/client.entity';
 import { DeleteResult, Repository } from 'typeorm';
+import { AssignCarToClient } from '../dto/assign-car.dto';
 import { CreateAutomovilMysqlDto } from '../dto/create-automovil-mysql.dto';
 import { UpdateAutomovilMysqlDto } from '../dto/update-automovil-mysql.dto';
 import { Car } from '../interfaces/car.interface';
+import { SellerMysql } from 'src/App-Mysql/entities/seller.entity';
 
 @Injectable()
 export class AutomovilMysqlService {
+  
+  private readonly logger = new Logger(AutomovilMysqlService.name);
 
   constructor( 
+    @InjectRepository(ClientMysql) private clientsRepo: Repository<ClientMysql>,
     @InjectRepository(CarMysql) private carsRepo: Repository<CarMysql>,
+    @InjectRepository(SellerMysql) private sellersRepo: Repository<SellerMysql>
     ) {}
 
   createCar(createAutomovilMysqlDto: CreateAutomovilMysqlDto): Promise<Car> {
@@ -29,7 +36,8 @@ export class AutomovilMysqlService {
     const carExist = await this.carsRepo.findOne({
       where: {
           id: id
-      }
+      },
+      relations: ["seller", "client"]
     });
     if(!carExist) throw new HttpException("No existe ningún auto con esta id", HttpStatus.NOT_FOUND);
     return carExist;
@@ -52,12 +60,21 @@ export class AutomovilMysqlService {
     return carExist.raw
   }
 
-  assignCarToClient(assignInfo: SellCarInfo) {
-    throw new Error('Method not implemented.');
+  async assignCarToClient(id: string, assignInfo: AssignCarToClient): Promise<Car> {
+    const carFound = await this.getCarById(id);
+    const clientFound = await this.clientsRepo.findOne({
+      where: {
+          id: assignInfo.clientId
+      }
+    });
+     carFound.client = clientFound;
+     return this.carsRepo.save(carFound);     
   }
 
-  unassignCarFromClient(id: string) {
-    throw new Error('Method not implemented.');
+  async unassignCarFromClient(id: string): Promise<Car> {
+    const carFound = await this.getCarById(id);
+    carFound.client = null;
+    return this.carsRepo.save(carFound)
   }
-    
+      
 }

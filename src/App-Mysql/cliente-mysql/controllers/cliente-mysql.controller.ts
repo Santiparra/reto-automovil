@@ -1,5 +1,5 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Logger, ParseUUIDPipe } from '@nestjs/common';
-import { SellCarInfo } from 'src/App-Local-Version-Buena/vendedor/dto/sell-car.dto';
+import { AssignClientToCar } from './../dto/assign-client.dto';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Logger, ParseUUIDPipe, Put } from '@nestjs/common';
 import { CreateClienteMysqlDto } from '../dto/create-cliente-mysql.dto';
 import { ClienteMysqlService } from '../services/cliente-mysql.service';
 
@@ -38,17 +38,19 @@ export class ClienteMysqlController {
     return this.clienteMysqlService.deleteClient(id);
   }
 
-  @Post("/assign")
+  @Put("assign/:id")
   assign(
-    @Body() assignInfo: SellCarInfo ) {
-    return this.clienteMysqlService.assignCarToClient(assignInfo);
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() assignInfo: AssignClientToCar 
+    ) {
+    return this.clienteMysqlService.assignCarToClient(id, assignInfo);
   }
 
-  @Post(":id")
-  unassign( 
-    @Param("id", ParseUUIDPipe) id: string,
-    ) {
-    return this.clienteMysqlService.unassignCarToClient(id);
+  @Put("unassign/:id")
+  unassign( @Param("id", ParseUUIDPipe) id: string,
+    @Body() unassignInfo: AssignClientToCar 
+   ) {
+    return this.clienteMysqlService.unassignCarToClient(id, unassignInfo);
   }
 
 }

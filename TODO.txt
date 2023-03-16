@@ -3,30 +3,17 @@ Version Local:
     - Añadir Logs para Pino
     - Dividir funciones largas
     - Mejorar las excepciones
-    - Añadir Autentificacion?
-
+    
 Version Mysql :
 
-    - Dar logica a los Metodos
-    - Relaciones incluidas en los Querys
     - Excepciones
-    - Nueva coleccion Postman
+    - Actualiza coleccion Postman
     - Generar el .env
     
-Version Local Basica:
+?Version Local Basica:
 
     - Generar recursos
     - Metodos 
-
-Version Mongo :
-
-    - Generar recursos
-    - Definir Esquemas
-    - Importacion mongoose
-    - Definir Rutas
-    - Dar logica a los Metodos
-    - Excepciones
-    - Nueva coleccion Postman    
 
 Global: 
 

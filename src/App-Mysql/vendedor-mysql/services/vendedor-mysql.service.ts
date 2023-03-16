@@ -1,6 +1,7 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { AddSaleDto } from './../dto/add-sale.dto';
+import { AutomovilMysqlService } from './../../automovil-mysql/services/automovil-mysql.service';
+import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { SellCarInfo } from 'src/App-Local-Version-Buena/vendedor/dto/sell-car.dto';
 import { SellerMysql } from 'src/App-Mysql/entities/seller.entity';
 import { Repository, DeleteResult } from 'typeorm';
 import { CreateVendedorMysqlDto } from '../dto/create-vendedor-mysql.dto';
@@ -9,8 +10,11 @@ import { Seller } from '../interfaces/seller.interface';
 @Injectable()
 export class VendedorMysqlService {
 
+  private readonly logger = new Logger(VendedorMysqlService.name);
+
   constructor( 
     @InjectRepository(SellerMysql) private sellersRepo: Repository<SellerMysql>,
+    private carsService: AutomovilMysqlService,
     ) {}
 
   createVendedor(createVendedorMysqlDto: CreateVendedorMysqlDto): Promise<Seller> {
@@ -28,7 +32,8 @@ export class VendedorMysqlService {
     const sellerExist = await this.sellersRepo.findOne({
       where: {
           id: id
-      }
+      },
+      relations: ["sold_cars"]
     });
     if(!sellerExist) throw new HttpException("No existe ningún vendedor con esta id", HttpStatus.NOT_FOUND);
     return sellerExist;
@@ -51,12 +56,17 @@ export class VendedorMysqlService {
     return sellerExist
   }
 
-  getSoldCarsBySellerId(id: string) {
-    throw new Error('Method not implemented.');
+  async getSoldCarsBySellerId(id: string) {
+    const sellerFound = await this.getSellerById(id);
+    return sellerFound.sold_cars;
   }
   
-  addSoldCar(id: string, sellingData: SellCarInfo) {
-    throw new Error('Method not implemented.');
+  async addSoldCar(id: string, sellingData: AddSaleDto) {
+    const sellerFound = await this.getSellerById(id);
+    const carFound = await this.carsService.getCarById(sellingData.carId);
+    sellerFound.sold_cars.push(carFound);
+    await this.sellersRepo.save(sellerFound);
+    return sellerFound
   } 
  
 }

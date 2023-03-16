@@ -5,6 +5,6 @@ export interface Seller {
     id: string;
     name: string;    
     bought_cars?: Car[]; 
-    sold_cars?: Car[];
+    sold_cars: Car[];
 
 }

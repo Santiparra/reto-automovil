@@ -1,6 +1,7 @@
 import { 
     Column, 
     Entity,
+    JoinColumn,
     ManyToOne,
     PrimaryGeneratedColumn, 
 } from "typeorm";
@@ -23,9 +24,11 @@ export class CarMysql {
     year: number;
 
     @ManyToOne( () => SellerMysql, seller => seller.sold_cars, {onDelete: "SET NULL"} )
+    @JoinColumn()
     seller: SellerMysql
 
     @ManyToOne( () => ClientMysql, client => client.bought_cars, {onDelete: "SET NULL"} )
+    @JoinColumn()
     client: ClientMysql 
 
 }

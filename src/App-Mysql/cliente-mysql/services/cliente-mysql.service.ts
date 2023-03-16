@@ -1,16 +1,20 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { AutomovilMysqlService } from './../../automovil-mysql/services/automovil-mysql.service';
+import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateClienteMysqlDto } from '../dto/create-cliente-mysql.dto';
 import { Repository, DeleteResult } from 'typeorm';
-import { SellCarInfo } from 'src/App-Local-Version-Buena/vendedor/dto/sell-car.dto';
 import { ClientMysql } from 'src/App-Mysql/entities/client.entity';
 import { Client } from '../interfaces/client.interface';
+import { AssignClientToCar } from '../dto/assign-client.dto';
 
 @Injectable()
 export class ClienteMysqlService {
+    
+  private readonly logger = new Logger(ClienteMysqlService.name);
 
   constructor( 
     @InjectRepository(ClientMysql) private clientsRepo: Repository<ClientMysql>,
+    private carsService: AutomovilMysqlService
     ) {}
 
   createClient(createClienteMysqlDto: CreateClienteMysqlDto): Promise<Client> {
@@ -28,7 +32,8 @@ export class ClienteMysqlService {
     const clientExist = await this.clientsRepo.findOne({
       where: {
           id: id
-      }
+      },
+      relations: ["bought_cars"]
     });
     if(!clientExist) throw new HttpException("No hay ningún cliente con esta id", HttpStatus.NOT_FOUND);
     return clientExist;
@@ -51,12 +56,19 @@ export class ClienteMysqlService {
     return clientExist
   }
 
-  assignCarToClient(assignInfo: SellCarInfo) {
-    throw new Error('Method not implemented.');
+  async assignCarToClient(id: string, assignInfo: AssignClientToCar): Promise<Client> {
+    const clientFound = await this.getClientById(id);
+    const carFound = await this.carsService.getCarById(assignInfo.carId);
+    clientFound.bought_cars.push(carFound);
+    await this.clientsRepo.save(clientFound);
+    return clientFound
   }
-
-  unassignCarToClient(id: string) {
-    throw new Error('Method not implemented.');
+ 
+  async unassignCarToClient(id: string, assignInfo: AssignClientToCar): Promise<Client> {
+    const clientFound = await this.getClientById(id);
+    clientFound.bought_cars = clientFound.bought_cars.filter(car => car.id !== assignInfo.carId);
+    await this.clientsRepo.save(clientFound);
+    return clientFound
   }
 
 }

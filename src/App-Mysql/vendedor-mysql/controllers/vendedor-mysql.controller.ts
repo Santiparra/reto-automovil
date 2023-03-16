@@ -1,5 +1,5 @@
+import { AddSaleDto } from './../dto/add-sale.dto';
 import { Controller, Get, Post, Body, Patch, Param, Delete, Logger, ParseUUIDPipe } from '@nestjs/common';
-import { SellCarInfo } from 'src/App-Local-Version-Buena/vendedor/dto/sell-car.dto';
 import { CreateVendedorMysqlDto } from '../dto/create-vendedor-mysql.dto';
 import { VendedorMysqlService } from '../services/vendedor-mysql.service';
 
@@ -43,10 +43,10 @@ export class VendedorMysqlController {
     return this.vendedorMysqlService.getSoldCarsBySellerId(id)
   }
 
-  @Post(":id")
+  @Post("sale/:id")
   sellCar(
     @Param("id", ParseUUIDPipe) id: string, 
-    @Body() sellingData: SellCarInfo
+    @Body() sellingData: AddSaleDto
     ) {
     return this.vendedorMysqlService.addSoldCar(id, sellingData);
   }

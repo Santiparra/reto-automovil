@@ -4,7 +4,7 @@ export interface Client {
 
     id: string;
     name: string;
-    bought_cars?: Car[]; 
+    bought_cars: Car[]; 
     sold_cars?: Car[];
 
 }

@@ -1,12 +1,16 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AutomovilMysqlModule } from '../automovil-mysql/automovil-mysql.module';
 import { SellerMysql } from '../entities/seller.entity';
 import { VendedorMysqlController } from './controllers/vendedor-mysql.controller';
 import { VendedorMysqlService } from './services/vendedor-mysql.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ SellerMysql ])],
+  imports: [
+    forwardRef(() => AutomovilMysqlModule),
+    TypeOrmModule.forFeature([ SellerMysql ])],
   controllers: [VendedorMysqlController],
-  providers: [VendedorMysqlService]
+  providers: [VendedorMysqlService],
+  exports: [TypeOrmModule]
 })
 export class VendedorMysqlModule {}

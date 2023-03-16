@@ -1,5 +1,5 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Logger, ParseUUIDPipe } from '@nestjs/common';
-import { SellCarInfo } from 'src/App-Local-Version-Buena/vendedor/dto/sell-car.dto';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Logger, ParseUUIDPipe, Put } from '@nestjs/common';
+import { AssignCarToClient } from '../dto/assign-car.dto';
 import { CreateAutomovilMysqlDto } from '../dto/create-automovil-mysql.dto';
 import { UpdateAutomovilMysqlDto } from '../dto/update-automovil-mysql.dto';
 import { AutomovilMysqlService } from '../services/automovil-mysql.service';
@@ -36,15 +36,19 @@ export class AutomovilMysqlController {
     return this.automovilMysqlService.deleteCar(id);
   }
 
-  @Post('assign')
-  assign( @Body() assignInfo: SellCarInfo) {
-    return this.automovilMysqlService.assignCarToClient(assignInfo);
+  @Put('assign/:id')
+  assign( 
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() assignInfo: AssignCarToClient
+    ) {
+    return this.automovilMysqlService.assignCarToClient(id, assignInfo);
   }
 
-  @Post(':id')
+  @Put('unassign/:id')
   unassign(
     @Param('id', ParseUUIDPipe) id: string,
     ) {
     return this.automovilMysqlService.unassignCarFromClient(id);
   }
+  
 }
