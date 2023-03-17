@@ -1,0 +1,1862 @@
+{
+	"info": {
+		"_postman_id": "bf58bec7-effe-4259-8b00-2a346a0ff950",
+		"name": "Automoviliaria Simple",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25929179"
+	},
+	"item": [
+		{
+			"name": "Autos",
+			"item": [
+				{
+					"name": "Get => Autos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/automovil-simple",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil-simple"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => Autos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/automovil-simple",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil-simple"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "8376caa9-2dfb-4342-b36c-997203e19865"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "204"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cc-V3Ox8KpKdlAFm8nsRfdMu2ObtBY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:03:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"9ac4d7c1-3bd1-46ae-836c-ce8c49c37b22\",\n        \"brand\": \"fiat\",\n        \"model\": \"fiorino\",\n        \"year\": 1589,\n        \"seller\": [\n            {\n                \"id\": \"6cc24470-2f55-462e-a3a5-06997f7e14f0\",\n                \"name\": \"Juan Perez\",\n                \"sold_cars\": [\n                    null\n                ]\n            }\n        ],\n        \"client\": [\n            null\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get => Auto por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/automovil-simple/9ac4d7c1-3bd1-46ae-836c-ce8c49c37b22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil-simple",
+								"9ac4d7c1-3bd1-46ae-836c-ce8c49c37b22"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => Auto por id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/automovil-simple/9ac4d7c1-3bd1-46ae-836c-ce8c49c37b22",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil-simple",
+										"9ac4d7c1-3bd1-46ae-836c-ce8c49c37b22"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "a8eea7d4-f104-4fbb-8174-b7a2221c7944"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "202"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ca-XrKhm7asUesjLgA0FU3tO8UgSaw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:05:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"9ac4d7c1-3bd1-46ae-836c-ce8c49c37b22\",\n    \"brand\": \"fiat\",\n    \"model\": \"fiorino\",\n    \"year\": 1589,\n    \"seller\": [\n        {\n            \"id\": \"6cc24470-2f55-462e-a3a5-06997f7e14f0\",\n            \"name\": \"Juan Perez\",\n            \"sold_cars\": [\n                null\n            ]\n        }\n    ],\n    \"client\": [\n        null\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Post => Create auto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brand\": \"fiat\",\n    \"model\": \"fiorino\",\n    \"year\": 1589,\n    \"seller\": \"6cc24470-2f55-462e-a3a5-06997f7e14f0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/automovil-simple",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil-simple"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => Create auto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand\": \"fiat\",\n    \"model\": \"fiorino\",\n    \"year\": 1589,\n    \"seller\": \"6cc24470-2f55-462e-a3a5-06997f7e14f0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/automovil-simple",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil-simple"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "2be5998b-ca91-4f41-b240-e6cad3e17a1f"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "202"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ca-XrKhm7asUesjLgA0FU3tO8UgSaw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:02:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"9ac4d7c1-3bd1-46ae-836c-ce8c49c37b22\",\n    \"brand\": \"fiat\",\n    \"model\": \"fiorino\",\n    \"year\": 1589,\n    \"seller\": [\n        {\n            \"id\": \"6cc24470-2f55-462e-a3a5-06997f7e14f0\",\n            \"name\": \"Juan Perez\",\n            \"sold_cars\": [\n                null\n            ]\n        }\n    ],\n    \"client\": [\n        null\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Patch => Editar auto",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brand\": \"volkswagen\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/automovil-simple/389ff047-fb6c-4e48-bcb2-c7952bf4c270",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil-simple",
+								"389ff047-fb6c-4e48-bcb2-c7952bf4c270"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Patch => Editar auto",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand\": \"volkswagen\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/automovil-simple/389ff047-fb6c-4e48-bcb2-c7952bf4c270",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil-simple",
+										"389ff047-fb6c-4e48-bcb2-c7952bf4c270"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "6a5a2d59-3675-4822-b476-638782aaf9f2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "208"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d0-Bkb/2edt/wYdTZRJx/gKG8JmyZk\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:18:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"389ff047-fb6c-4e48-bcb2-c7952bf4c270\",\n    \"brand\": \"volkswagen\",\n    \"model\": \"fiorino\",\n    \"year\": 1589,\n    \"seller\": [\n        {\n            \"id\": \"b96a5663-bc00-45a8-a5dc-8cccf4992509\",\n            \"name\": \"Juan Perez\",\n            \"sold_cars\": [\n                null\n            ]\n        }\n    ],\n    \"client\": [\n        null\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete => Borrar auto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/automovil-simple/389ff047-fb6c-4e48-bcb2-c7952bf4c270",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil-simple",
+								"389ff047-fb6c-4e48-bcb2-c7952bf4c270"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete => Borrar auto",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/automovil-simple/389ff047-fb6c-4e48-bcb2-c7952bf4c270",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil-simple",
+										"389ff047-fb6c-4e48-bcb2-c7952bf4c270"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "dc4e071c-3bd2-4cac-ae70-33e356f37b3c"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "208"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d0-Bkb/2edt/wYdTZRJx/gKG8JmyZk\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:19:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"389ff047-fb6c-4e48-bcb2-c7952bf4c270\",\n    \"brand\": \"volkswagen\",\n    \"model\": \"fiorino\",\n    \"year\": 1589,\n    \"seller\": [\n        {\n            \"id\": \"b96a5663-bc00-45a8-a5dc-8cccf4992509\",\n            \"name\": \"Juan Perez\",\n            \"sold_cars\": [\n                null\n            ]\n        }\n    ],\n    \"client\": [\n        null\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Post => Asignar Auto a cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"clientId\": \"09514ac7-22af-4de3-977d-a5eac1d2b484\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/automovil-simple/assign/7ca923a4-230c-499b-8cd8-b94f15ed75b7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil-simple",
+								"assign",
+								"7ca923a4-230c-499b-8cd8-b94f15ed75b7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => Asignar Auto a cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"clientId\": \"09514ac7-22af-4de3-977d-a5eac1d2b484\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/automovil-simple/assign/7ca923a4-230c-499b-8cd8-b94f15ed75b7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil-simple",
+										"assign",
+										"7ca923a4-230c-499b-8cd8-b94f15ed75b7"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "2cb2793d-1547-438b-b3a1-0e511e61fff1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "286"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11e-fkJJvMD2rCMgSSxkmX+KQcqCG9Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:22:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"7ca923a4-230c-499b-8cd8-b94f15ed75b7\",\n    \"brand\": \"fiat\",\n    \"model\": \"fiorino\",\n    \"year\": 1589,\n    \"seller\": [\n        {\n            \"id\": \"b96a5663-bc00-45a8-a5dc-8cccf4992509\",\n            \"name\": \"Juan Perez\",\n            \"sold_cars\": [\n                null\n            ]\n        }\n    ],\n    \"client\": [\n        {\n            \"id\": \"09514ac7-22af-4de3-977d-a5eac1d2b484\",\n            \"name\": \"pablo marmol\",\n            \"bought_cars\": [\n                null\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Post => Quitar cliente de auto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/automovil-simple/unassign/7ca923a4-230c-499b-8cd8-b94f15ed75b7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"automovil-simple",
+								"unassign",
+								"7ca923a4-230c-499b-8cd8-b94f15ed75b7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => Quitar cliente de auto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/automovil-simple/unassign/7ca923a4-230c-499b-8cd8-b94f15ed75b7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"automovil-simple",
+										"unassign",
+										"7ca923a4-230c-499b-8cd8-b94f15ed75b7"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "e63451c2-5b71-467b-979d-0b2e18b81742"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "202"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ca-Qoy6QawYBPT/hsICvx53d2ipytg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:23:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"7ca923a4-230c-499b-8cd8-b94f15ed75b7\",\n    \"brand\": \"fiat\",\n    \"model\": \"fiorino\",\n    \"year\": 1589,\n    \"seller\": [\n        {\n            \"id\": \"b96a5663-bc00-45a8-a5dc-8cccf4992509\",\n            \"name\": \"Juan Perez\",\n            \"sold_cars\": [\n                null\n            ]\n        }\n    ],\n    \"client\": [\n        null\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Post => Crear cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"pablo marmol\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cliente-simple",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente-simple"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => Crear cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"pablo marmol\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/cliente-simple",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente-simple"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "df4aec41-27ac-4d45-8f31-3787302a6d95"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "88"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"58-yG4M/RJjhPA0XpZMOl1UlMfhb94\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:21:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"09514ac7-22af-4de3-977d-a5eac1d2b484\",\n    \"name\": \"pablo marmol\",\n    \"bought_cars\": [\n        null\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get => Clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cliente-simple",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente-simple"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => Clientes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/cliente-simple",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente-simple"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "fcdd48d1-5c91-4d04-b419-ab535a2b505e"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-Oi/Lv3/n8vkrr6B2L45BVDxWY/8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:29:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"09514ac7-22af-4de3-977d-a5eac1d2b484\",\n        \"name\": \"pablo marmol\",\n        \"bought_cars\": [\n            null\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get => Cliente por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cliente-simple/09514ac7-22af-4de3-977d-a5eac1d2b484",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente-simple",
+								"09514ac7-22af-4de3-977d-a5eac1d2b484"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => Cliente por id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/cliente-simple/09514ac7-22af-4de3-977d-a5eac1d2b484",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente-simple",
+										"09514ac7-22af-4de3-977d-a5eac1d2b484"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "6408a3c0-9a13-426a-9c28-5be313a98cc8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "88"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"58-yG4M/RJjhPA0XpZMOl1UlMfhb94\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:29:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"09514ac7-22af-4de3-977d-a5eac1d2b484\",\n    \"name\": \"pablo marmol\",\n    \"bought_cars\": [\n        null\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Patch => editar cliente",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Fernanda Martinez\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cliente-simple/9825ae9e-b49c-42e5-8d43-0a5bc516123d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente-simple",
+								"9825ae9e-b49c-42e5-8d43-0a5bc516123d"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Patch => editar cliente",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Fernanda Martinez\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/cliente-simple/9825ae9e-b49c-42e5-8d43-0a5bc516123d",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente-simple",
+										"9825ae9e-b49c-42e5-8d43-0a5bc516123d"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "f987c7d0-3ffc-49f6-82c5-8a7696856963"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "93"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5d-wNHNLIN+wyVWFBCtyfq/pKDkaDg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:32:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"9825ae9e-b49c-42e5-8d43-0a5bc516123d\",\n    \"name\": \"Fernanda Martinez\",\n    \"bought_cars\": [\n        null\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete => borrar cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cliente-simple/9825ae9e-b49c-42e5-8d43-0a5bc516123d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente-simple",
+								"9825ae9e-b49c-42e5-8d43-0a5bc516123d"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete => borrar cliente",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/cliente-simple/9825ae9e-b49c-42e5-8d43-0a5bc516123d",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente-simple",
+										"9825ae9e-b49c-42e5-8d43-0a5bc516123d"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "59d1f7c5-c288-4d0d-b2b6-7d8433f27461"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "93"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5d-wNHNLIN+wyVWFBCtyfq/pKDkaDg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:32:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"9825ae9e-b49c-42e5-8d43-0a5bc516123d\",\n    \"name\": \"Fernanda Martinez\",\n    \"bought_cars\": [\n        null\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Post => asignar auto a cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"carId\": \"f53e11c2-cf08-490c-8547-f0a6b97d1ce2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cliente-simple/assign/0047c5e0-4679-4239-9557-069f69d7cc2b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente-simple",
+								"assign",
+								"0047c5e0-4679-4239-9557-069f69d7cc2b"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => asignar auto a cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"carId\": \"f53e11c2-cf08-490c-8547-f0a6b97d1ce2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/cliente-simple/assign/0047c5e0-4679-4239-9557-069f69d7cc2b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente-simple",
+										"assign",
+										"0047c5e0-4679-4239-9557-069f69d7cc2b"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "2d9e3215-1397-4509-9add-b60116b9aa30"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "274"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"112-nZxwR3o12MMf1jrX0cwnmefmiuQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:57:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"0047c5e0-4679-4239-9557-069f69d7cc2b\",\n    \"name\": \"romina\",\n    \"bought_cars\": [\n        {\n            \"id\": \"f53e11c2-cf08-490c-8547-f0a6b97d1ce2\",\n            \"brand\": \"fiat\",\n            \"model\": \"fiorino\",\n            \"year\": 1589,\n            \"seller\": [\n                {\n                    \"id\": \"5e8a4519-b214-4be6-8cd8-171e2d78d1fa\",\n                    \"name\": \"juan\",\n                    \"sold_cars\": [\n                        null\n                    ]\n                }\n            ],\n            \"client\": [\n                null\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Post => Quitar auto de cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"carId\": \"f53e11c2-cf08-490c-8547-f0a6b97d1ce2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cliente-simple/unassign/0047c5e0-4679-4239-9557-069f69d7cc2b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente-simple",
+								"unassign",
+								"0047c5e0-4679-4239-9557-069f69d7cc2b"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => Quitar auto de cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"carId\": \"f53e11c2-cf08-490c-8547-f0a6b97d1ce2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/cliente-simple/unassign/0047c5e0-4679-4239-9557-069f69d7cc2b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cliente-simple",
+										"unassign",
+										"0047c5e0-4679-4239-9557-069f69d7cc2b"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "55e5a38e-8f91-4d19-bbb5-a741a15bbdc1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-uEMEoyfztBVzH5fzs6ZrbmK9Ai4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:59:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"0047c5e0-4679-4239-9557-069f69d7cc2b\",\n    \"name\": \"romina\",\n    \"bought_cars\": []\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Vendedor",
+			"item": [
+				{
+					"name": "Get => Vendedores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vendedor-simple",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor-simple"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => Vendedores",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/vendedor-simple",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor-simple"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "a6609c69-09e2-4d04-9dfb-6c88801ebd20"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-mt3npn0D8A1Ho5eoY7RkPaKRQt4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:34:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"ec110db4-dd79-4815-80e8-b7c79ce48819\",\n        \"name\": \"Juan Perez\",\n        \"sold_cars\": [\n            null\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get => vendedor por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vendedor-simple/ec110db4-dd79-4815-80e8-b7c79ce48819",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor-simple",
+								"ec110db4-dd79-4815-80e8-b7c79ce48819"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => vendedor por id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/vendedor-simple/ec110db4-dd79-4815-80e8-b7c79ce48819",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor-simple",
+										"ec110db4-dd79-4815-80e8-b7c79ce48819"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "bec19391-c9e9-462c-b545-0de3ae013178"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-9IBr38G956fTjZflz8cdBkdnf7o\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:35:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"ec110db4-dd79-4815-80e8-b7c79ce48819\",\n    \"name\": \"Juan Perez\",\n    \"sold_cars\": [\n        null\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Post => crear Vendedor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Juan Perez\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/vendedor-simple",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor-simple"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => crear Vendedor",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Juan Perez\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/vendedor-simple",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor-simple"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "f8852ef7-22fb-4858-921b-bbc0758451f8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-9IBr38G956fTjZflz8cdBkdnf7o\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:34:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"ec110db4-dd79-4815-80e8-b7c79ce48819\",\n    \"name\": \"Juan Perez\",\n    \"sold_cars\": [\n        null\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Patch => Editar Cliente",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Paula Gomez\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/vendedor-simple/ec110db4-dd79-4815-80e8-b7c79ce48819",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor-simple",
+								"ec110db4-dd79-4815-80e8-b7c79ce48819"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Patch => Editar Cliente",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Paula Gomez\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/vendedor-simple/ec110db4-dd79-4815-80e8-b7c79ce48819",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor-simple",
+										"ec110db4-dd79-4815-80e8-b7c79ce48819"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "d50a179a-4876-4e7b-bfe4-071d744d06c3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-s+GzaG95vKGw9DBdQhPJ6iYsBYI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:36:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"ec110db4-dd79-4815-80e8-b7c79ce48819\",\n    \"name\": \"Paula Gomez\",\n    \"sold_cars\": [\n        null\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete => Borrar vendedor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vendedor-simple/ec110db4-dd79-4815-80e8-b7c79ce48819",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor-simple",
+								"ec110db4-dd79-4815-80e8-b7c79ce48819"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete => Borrar vendedor",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/vendedor-simple/ec110db4-dd79-4815-80e8-b7c79ce48819",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor-simple",
+										"ec110db4-dd79-4815-80e8-b7c79ce48819"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "3056dfc7-719f-461c-a5ee-e50ba3a69647"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-s+GzaG95vKGw9DBdQhPJ6iYsBYI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:37:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"ec110db4-dd79-4815-80e8-b7c79ce48819\",\n    \"name\": \"Paula Gomez\",\n    \"sold_cars\": [\n        null\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get => autos vendidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vendedor-simple/sold-cars/8538d70e-c1d3-4090-a73b-48bb8aeb0d33",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor-simple",
+								"sold-cars",
+								"8538d70e-c1d3-4090-a73b-48bb8aeb0d33"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get => autos vendidos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/vendedor-simple/sold-cars/8b231779-6cda-4887-bdbd-b916de8dd390",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor-simple",
+										"sold-cars",
+										"8b231779-6cda-4887-bdbd-b916de8dd390"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "54c7bb5c-2ed2-41a3-997a-62fd309c8d3a"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "124"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7c-vePIy6IrEfOj3b2zFiFPKGl06yE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:51:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"3ccc918f-a884-4c2a-825e-1b5db8156fd9\",\n        \"brand\": \"fiat\",\n        \"model\": \"fiorino\",\n        \"year\": 1589,\n        \"seller\": [\n            null\n        ],\n        \"client\": [\n            null\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Post => Asignar auto a vendedor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"carId\": \"3ccc918f-a884-4c2a-825e-1b5db8156fd9\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/vendedor-simple/8b231779-6cda-4887-bdbd-b916de8dd390",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vendedor-simple",
+								"8b231779-6cda-4887-bdbd-b916de8dd390"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post => Asignar auto a vendedor",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"carId\": \"3ccc918f-a884-4c2a-825e-1b5db8156fd9\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/vendedor-simple/8b231779-6cda-4887-bdbd-b916de8dd390",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"vendedor-simple",
+										"8b231779-6cda-4887-bdbd-b916de8dd390"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Correlation-Id",
+									"value": "4c1925f7-494f-458b-b5cd-a39e410b78c7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "196"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c4-LrSPVIy7zFBxkjYW0povN1ZLgh4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Mar 2023 17:50:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"8b231779-6cda-4887-bdbd-b916de8dd390\",\n    \"name\": \"juan\",\n    \"sold_cars\": [\n        {\n            \"id\": \"3ccc918f-a884-4c2a-825e-1b5db8156fd9\",\n            \"brand\": \"fiat\",\n            \"model\": \"fiorino\",\n            \"year\": 1589,\n            \"seller\": [\n                null\n            ],\n            \"client\": [\n                null\n            ]\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
