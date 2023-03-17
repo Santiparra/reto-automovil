@@ -2,7 +2,8 @@ import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { IsString, IsNotEmpty, IsOptional, IsInt } from 'class-validator';
 import { CreateAutomovilSimpleDto } from './create-automovil-simple.dto';
 
-export class UpdateAutomovilSimpleDto extends PartialType(CreateAutomovilSimpleDto) {
+export class UpdateAutomovilSimpleDto {
+    
     @IsString()
     @IsNotEmpty()
     @IsOptional()
@@ -20,4 +21,5 @@ export class UpdateAutomovilSimpleDto extends PartialType(CreateAutomovilSimpleD
     @IsOptional()
     @ApiProperty({ example: 1997, description: 'Año en que se fabrico el auto' })
     year?: number;
+    
 }
