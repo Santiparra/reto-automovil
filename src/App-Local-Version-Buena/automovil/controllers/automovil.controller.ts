@@ -59,7 +59,6 @@ export class AutomovilController {
     return this.automovilService.deleteCar(uuid);
   }
 
-  //Pregunta a matias por el bug que daba aca
   @UsePipes(new ValidationPipe({ whitelist: true, transform: true }))  
   @Post('assign')
   assign( @Body() assignInfo: SellCarInfo) {

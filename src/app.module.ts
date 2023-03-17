@@ -11,6 +11,10 @@ import { ClienteModule } from './App-Local-Version-Buena/cliente/cliente.module'
 import { ConfigModule } from '@nestjs/config';
 import { typeOrmAsyncConfig } from './utils/typeorm.config';
 import { loggerConfig } from './utils/logger.config';
+import { AutomovilSimpleModule } from './App-Local-Version-Simple/automovil-simple/automovil-simple.module';
+import { ClienteSimpleModule } from './App-Local-Version-Simple/cliente-simple/cliente-simple.module';
+import { VendedorSimpleModule } from './App-Local-Version-Simple/vendedor-simple/vendedor-simple.module';
+
 
 @Module({
   imports: [
@@ -20,9 +24,12 @@ import { loggerConfig } from './utils/logger.config';
     AutomovilMysqlModule, 
     ClienteMysqlModule, 
     VendedorMysqlModule,
+    AutomovilSimpleModule,
+    ClienteSimpleModule,
+    VendedorSimpleModule, 
     LoggerModule.forRoot(loggerConfig),
     ConfigModule.forRoot({ isGlobal: true }),
-    TypeOrmModule.forRootAsync(typeOrmAsyncConfig),    
+    TypeOrmModule.forRootAsync(typeOrmAsyncConfig),       
   ],
   controllers: [],
   providers: [],
