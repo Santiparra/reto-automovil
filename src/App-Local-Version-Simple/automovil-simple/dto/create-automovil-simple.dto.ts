@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsNotEmpty, IsInt, IsUUID } from "class-validator";
+import { IsString, IsNotEmpty, IsInt, IsUUID, IsOptional } from "class-validator";
 
 export class CreateAutomovilSimpleDto {
     @IsString()
@@ -26,6 +26,7 @@ export class CreateAutomovilSimpleDto {
     seller: string;
    
     @IsUUID()
+    @IsOptional()
     @IsNotEmpty()
     @ApiProperty({ 
         example: "39f2ed1e-0828-4ec6-8ec4-a622a4f06761", 

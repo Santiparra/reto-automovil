@@ -13,7 +13,7 @@ export class AutomovilSimpleService {
   constructor(
     @Inject(forwardRef(() => ClienteSimpleService))
     private clienteService: ClienteSimpleService,
-    @Inject(forwardRef(() => ClienteSimpleService))
+    @Inject(forwardRef(() => VendedorSimpleService))
     private vendedorService: VendedorSimpleService
   ) {}
 
@@ -24,7 +24,7 @@ export class AutomovilSimpleService {
   createCar(createAutomovilSimpleDto: CreateAutomovilSimpleDto): AutoSimple {
     let newCar: AutoSimple;
     const vendedor = this.vendedorService.getSellerById(createAutomovilSimpleDto.seller);
-    if (!vendedor) throw new HttpException("no hay vendedor con esta id", HttpStatus.BAD_REQUEST);
+    if (!vendedor) throw new HttpException("no hay vendedor con esta id en la bd", HttpStatus.BAD_REQUEST);
     const autoConId = this.addId(createAutomovilSimpleDto);  
     if (createAutomovilSimpleDto.client) {
       const cliente = this.clienteService.getClientById(createAutomovilSimpleDto.client);
@@ -40,11 +40,6 @@ export class AutomovilSimpleService {
     return this.autos;
   }
 
-  getCarsOnSale(): AutoSimple[] {
-    const autoALaVenta = this.autos.filter(esto => esto.client === null || !esto.client);
-    return autoALaVenta
-  }
-  
   getCarById(uuid: string): AutoSimple {
     const auto = this.autos.find(esto => esto.id === uuid);
     return auto
@@ -92,7 +87,8 @@ export class AutomovilSimpleService {
 
   //helper function para mantener el codigo dry
   replaceCar(car: AutoSimple): void {
-    const index = this.autos.indexOf(car);
+    const carFound = this.getCarById(car.id)
+    const index = this.autos.indexOf( carFound );
     if ( index === -1 ) throw new Error ("Hubo un error en nuestra base de datos");
     this.autos.splice(index, 1, car);
   }

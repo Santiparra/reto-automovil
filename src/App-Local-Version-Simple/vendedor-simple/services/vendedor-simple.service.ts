@@ -1,4 +1,4 @@
-import { forwardRef, HttpException, HttpStatus, Inject, Injectable, Logger } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { AutomovilSimpleService } from 'src/App-Local-Version-Simple/automovil-simple/services/automovil-simple.service';
 import { v4 as uuidv4 } from 'uuid';
 import { AgregarVenta } from '../dto/agregar-venta.dto';
@@ -61,6 +61,8 @@ export class VendedorSimpleService {
     if (!autoFound) throw new HttpException("Este auto no se encuentra en la base de datos", HttpStatus.NOT_FOUND);
     const sellerFound = this.getSellerById(uuid);
     if (!sellerFound) throw new HttpException("Este cliente no se encuentra en la base de datos", HttpStatus.NOT_FOUND);
+    autoFound.seller = [null];
+    if (sellerFound.sold_cars[0] === null) sellerFound.sold_cars = []; 
     sellerFound.sold_cars.push(autoFound);
     this.replaceSeller(sellerFound);
     return sellerFound
@@ -75,7 +77,8 @@ export class VendedorSimpleService {
 
   //helper function para mantener el codigo dry
   replaceSeller(vendedor: VendedorSimple): void {
-    const index = this.vendedores.indexOf(vendedor);
+    const vendedorFound = this.getSellerById(vendedor.id)
+    const index = this.vendedores.indexOf(vendedorFound);
     if ( index === -1 ) throw new Error ("Hubo un error en nuestra base de datos");
     this.vendedores.splice(index, 1, vendedor);
   }

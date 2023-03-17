@@ -35,11 +35,6 @@ export class AutomovilSimpleController {
     return this.automovilSimpleService.getAllCars();
   }
 
-  @Get("/onsale")
-  findAllCarsOnSale() {
-    return this.automovilSimpleService.getCarsOnSale();
-  }
-
   @Get(':uuid')
   findOne( @Param('uuid', ParseUUIDPipe) uuid: string ) {
     return this.automovilSimpleService.getCarById(uuid);

@@ -61,6 +61,7 @@ export class ClienteSimpleService {
     if (!autoFound) throw new HttpException("Este auto no se encuentra en la base de datos", HttpStatus.NOT_FOUND);
     const clientFound = this.getClientById(uuid);
     if (!clientFound) throw new HttpException("Este cliente no se encuentra en la base de datos", HttpStatus.NOT_FOUND);
+    if (clientFound.bought_cars[0] === null) clientFound.bought_cars = []; 
     clientFound.bought_cars.push(autoFound);
     this.replaceClient(clientFound);
     return clientFound
@@ -83,7 +84,8 @@ export class ClienteSimpleService {
 
   //helper function para mantener el codigo dry
   replaceClient(client: ClienteSimple): void {
-    const index = this.clientes.indexOf(client);
+    const clientFound = this.getClientById(client.id);
+    const index = this.clientes.indexOf(clientFound);
     if ( index === -1 ) throw new Error ("Hubo un error en nuestra base de datos");
     this.clientes.splice(index, 1, client);
   }
