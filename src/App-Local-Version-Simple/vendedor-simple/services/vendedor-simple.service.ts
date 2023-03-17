@@ -1,25 +1,38 @@
-import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
+import { forwardRef, HttpException, HttpStatus, Inject, Injectable, Logger } from '@nestjs/common';
+import { AutomovilSimpleService } from 'src/App-Local-Version-Simple/automovil-simple/services/automovil-simple.service';
 import { v4 as uuidv4 } from 'uuid';
-import { SellCarInfo } from 'src/App-Local-Version-Buena/vendedor/dto/sell-car.dto';
+import { AgregarVenta } from '../dto/agregar-venta.dto';
 import { CreateVendedorSimpleDto } from '../dto/create-vendedor-simple.dto';
 import { UpdateVendedorSimpleDto } from '../dto/update-vendedor-simple.dto';
 import { VendedorSimple } from '../interfaces/vendedor-simple.interface';
 
 @Injectable()
 export class VendedorSimpleService {
+    
+  constructor (
+    
+    private autosService: AutomovilSimpleService
+    ) {}
 
   private readonly logger = new Logger(VendedorSimpleService.name);
 
   vendedores: VendedorSimple[] = [];
 
   createSeller(createVendedorSimpleDto: CreateVendedorSimpleDto): VendedorSimple {
-    const newVendedor = this.addId(createVendedorSimpleDto)
-    this.vendedores.push(newVendedor)
+    const newVendedor = this.addId(createVendedorSimpleDto);
+    if (!newVendedor.sold_cars) newVendedor.sold_cars = [null]
+    this.vendedores.push(newVendedor);
     return newVendedor
   }
 
   getAllSellers(): VendedorSimple[] {
     return this.vendedores;
+  }
+
+  getSoldCarsBySellerId(uuid: string) {
+    const sellerFound = this.getSellerById(uuid);
+    if ( !sellerFound ) throw new HttpException("Este vendedor no se encuentra en la base de datos", HttpStatus.NOT_FOUND);
+    return sellerFound.sold_cars
   }
 
   getSellerById(uuid: string): VendedorSimple {
@@ -43,12 +56,14 @@ export class VendedorSimpleService {
     return sellerFound;
   }
 
-  getSoldCarsBySellerId(uuid: string): VendedorSimple[] {
-    throw new Error('Method not implemented.');
-  }
-
-  addSoldCar(uuid: string, sellingData: SellCarInfo): VendedorSimple {
-    throw new Error('Method not implemented.');
+  addSoldCar(uuid: string, sellingData: AgregarVenta) {
+    const autoFound = this.autosService.getCarById(sellingData.carId);
+    if (!autoFound) throw new HttpException("Este auto no se encuentra en la base de datos", HttpStatus.NOT_FOUND);
+    const sellerFound = this.getSellerById(uuid);
+    if (!sellerFound) throw new HttpException("Este cliente no se encuentra en la base de datos", HttpStatus.NOT_FOUND);
+    sellerFound.sold_cars.push(autoFound);
+    this.replaceSeller(sellerFound);
+    return sellerFound
   }
 
   //esta funcion podria ser generica pero prefiero especificar la entidad retorno

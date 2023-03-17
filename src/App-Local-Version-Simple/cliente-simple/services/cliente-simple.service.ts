@@ -1,12 +1,18 @@
-import { Injectable, Logger, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, Logger, HttpException, HttpStatus, Inject, forwardRef } from '@nestjs/common';
+import { AutomovilSimpleService } from 'src/App-Local-Version-Simple/automovil-simple/services/automovil-simple.service';
 import { v4 as uuidv4 } from 'uuid';
-import { SellCarInfo } from 'src/App-Local-Version-Buena/vendedor/dto/sell-car.dto';
+import { AsignarCliente } from '../dto/asignar-cliente.dto';
 import { CreateClienteSimpleDto } from '../dto/create-cliente-simple.dto';
 import { UpdateClienteSimpleDto } from '../dto/update-cliente-simple.dto';
 import { ClienteSimple } from '../interfaces/cliente-simple.interface';
 
 @Injectable()
 export class ClienteSimpleService {
+    
+  constructor (
+    @Inject(forwardRef(() => AutomovilSimpleService))
+    private autosService: AutomovilSimpleService
+    ) {}
 
   private readonly logger = new Logger(ClienteSimpleService.name);
 
@@ -14,6 +20,7 @@ export class ClienteSimpleService {
   
   createClient(createClienteSimpleDto: CreateClienteSimpleDto): ClienteSimple {
     const newClient = this.addId(createClienteSimpleDto)
+    if (!newClient.bought_cars) newClient.bought_cars = [null]
     this.clientes.push(newClient)
     return newClient
   }
@@ -49,12 +56,22 @@ export class ClienteSimpleService {
     return clientFound.bought_cars
   }
 
-  assignCarToClient(assignInfo: SellCarInfo): ClienteSimple {
-    throw new Error('Method not implemented.');
+  assignCarToClient(uuid: string, assignInfo: AsignarCliente): ClienteSimple {
+    const autoFound = this.autosService.getCarById(assignInfo.carId);
+    if (!autoFound) throw new HttpException("Este auto no se encuentra en la base de datos", HttpStatus.NOT_FOUND);
+    const clientFound = this.getClientById(uuid);
+    if (!clientFound) throw new HttpException("Este cliente no se encuentra en la base de datos", HttpStatus.NOT_FOUND);
+    clientFound.bought_cars.push(autoFound);
+    this.replaceClient(clientFound);
+    return clientFound
   }
 
-  unassignCarToClient(uuid: string): ClienteSimple {
-    throw new Error('Method not implemented.');
+  unassignCarToClient(uuid: string, unassignInfo: AsignarCliente) {
+    const clientFound = this.getClientById(uuid);
+    if (!clientFound) throw new HttpException("Este cliente no se encuentra en la base de datos", HttpStatus.NOT_FOUND);
+    clientFound.bought_cars = clientFound.bought_cars.filter(esto => esto.id !== unassignInfo.carId);
+    this.replaceClient(clientFound);
+    return clientFound
   }
 
   //esta funcion podria ser generica pero prefiero especificar la entidad retorno

@@ -1,6 +1,5 @@
-import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsNotEmpty, IsOptional, IsInt } from 'class-validator';
-import { CreateAutomovilSimpleDto } from './create-automovil-simple.dto';
 
 export class UpdateAutomovilSimpleDto {
     

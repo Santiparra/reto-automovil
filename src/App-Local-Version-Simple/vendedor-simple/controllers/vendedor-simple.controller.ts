@@ -1,4 +1,4 @@
-import { SellCarInfo } from 'src/App-Local-Version-Buena/vendedor/dto/sell-car.dto';
+import { AgregarVenta } from '../dto/agregar-venta.dto';
 import { CreateVendedorSimpleDto } from '../dto/create-vendedor-simple.dto';
 import { UpdateVendedorSimpleDto } from '../dto/update-vendedor-simple.dto';
 import { VendedorSimpleService } from '../services/vendedor-simple.service';
@@ -62,7 +62,7 @@ export class VendedorSimpleController {
   @Post(":uuid")
   sellCar(
     @Param("uuid", ParseUUIDPipe) uuid: string, 
-    @Body() sellingData: SellCarInfo
+    @Body() sellingData: AgregarVenta
     ) {
     return this.vendedorSimpleService.addSoldCar(uuid, sellingData);
   }

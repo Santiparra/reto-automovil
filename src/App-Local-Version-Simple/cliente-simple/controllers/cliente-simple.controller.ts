@@ -1,4 +1,4 @@
-import { SellCarInfo } from 'src/App-Local-Version-Buena/vendedor/dto/sell-car.dto';
+import { AsignarCliente } from '../dto/asignar-cliente.dto';
 import { CreateClienteSimpleDto } from '../dto/create-cliente-simple.dto';
 import { UpdateClienteSimpleDto } from '../dto/update-cliente-simple.dto';
 import { ClienteSimpleService } from '../services/cliente-simple.service';
@@ -59,18 +59,20 @@ export class ClienteSimpleController {
   }
 
   @UsePipes(new ValidationPipe({ whitelist: true }))
-  @Post("/assign")
+  @Post("assign/:uuid")
   assign(
-    @Body() assignInfo: SellCarInfo ) {
-    return this.clienteSimpleService.assignCarToClient(assignInfo);
+    @Param("uuid", ParseUUIDPipe) uuid: string,
+    @Body() assignInfo: AsignarCliente ) {
+    return this.clienteSimpleService.assignCarToClient(uuid, assignInfo);
   }
 
   @UsePipes(new ValidationPipe({ whitelist: true }))
-  @Post(":uuid")
+  @Post("unassign/:uuid")
   unassign( 
     @Param("uuid", ParseUUIDPipe) uuid: string,
+    @Body() unassignInfo: AsignarCliente
     ) {
-    return this.clienteSimpleService.unassignCarToClient(uuid);
+    return this.clienteSimpleService.unassignCarToClient(uuid, unassignInfo);
   }
 
 }

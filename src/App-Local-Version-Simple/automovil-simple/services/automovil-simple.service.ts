@@ -1,17 +1,19 @@
-import { Injectable, Logger, NotFoundException, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, Logger, NotFoundException, HttpException, HttpStatus, forwardRef, Inject } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
-import { SellCarInfo } from 'src/App-Local-Version-Buena/vendedor/dto/sell-car.dto';
 import { CreateAutomovilSimpleDto } from '../dto/create-automovil-simple.dto';
 import { UpdateAutomovilSimpleDto } from '../dto/update-automovil-simple.dto';
 import { AutoSimple } from '../interfaces/auto-simple.interface';
 import { ClienteSimpleService } from 'src/App-Local-Version-Simple/cliente-simple/services/cliente-simple.service';
 import { VendedorSimpleService } from 'src/App-Local-Version-Simple/vendedor-simple/services/vendedor-simple.service';
+import { AssignarAuto } from '../dto/asignar-auto.dto';
 
 @Injectable()
 export class AutomovilSimpleService {
-  
+        
   constructor(
+    @Inject(forwardRef(() => ClienteSimpleService))
     private clienteService: ClienteSimpleService,
+    @Inject(forwardRef(() => ClienteSimpleService))
     private vendedorService: VendedorSimpleService
   ) {}
 
@@ -63,12 +65,22 @@ export class AutomovilSimpleService {
     return autoFound;
   }
 
-  assignCarToClient(assignInfo: SellCarInfo): AutoSimple {
-    throw new Error('Method not implemented.');
+  assignCarToClient(uuid: string, assignInfo: AssignarAuto): AutoSimple {
+    const autoFound = this.getCarById(uuid);
+    if (!autoFound) throw new HttpException("Este auto no se encuentra en la base de datos", HttpStatus.NOT_FOUND);
+    const clientFound = this.clienteService.getClientById(assignInfo.clientId);
+    if (!clientFound) throw new HttpException("Este cliente no se encuentra en la base de datos", HttpStatus.NOT_FOUND);
+    autoFound.client = [clientFound];
+    this.replaceCar(autoFound);
+    return autoFound
   }
 
   unassignCarFromClient(uuid: string): AutoSimple {
-    throw new Error('Method not implemented.');
+    const autoFound = this.getCarById(uuid);
+    if (!autoFound) throw new HttpException("Este auto no se encuentra en la base de datos", HttpStatus.NOT_FOUND);
+    autoFound.client = [null];
+    this.replaceCar(autoFound);
+    return autoFound;
   }
 
   //esta funcion podria ser generica pero prefiero especificar la entidad retorno
